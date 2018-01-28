@@ -1,0 +1,649 @@
+/* start css */
+
+@font-face {
+  font-family: ProximaBlack;
+  src: url('../fonts/ProximaNova-Black.otf');
+}
+
+@font-face {
+  font-family: Proxima;
+  src: url('../fonts/ProximaNova-Reg.otf');
+}
+
+@font-face {
+  font-family: ProximaBold;
+  src: url('../fonts/ProximaNova-Bold.otf');
+}
+
+@font-face {
+  font-family: ProximaLight;
+  src: url('../fonts/ProximaNova-Light.otf');
+}
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Proxima;
+  font-size: 1rem;
+  color: #777;
+  position: relative;
+}
+
+a {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+  margin-left: 200px;
+}
+
+nav {
+  width: 200px;
+  background: #404040;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 99;
+  transition: all 0.3s ease;
+}
+
+nav .close{
+  position: absolute;
+  display: none;
+  right: 0.3rem;
+  top: 0.3rem;
+}
+
+nav .close img {
+  height: 1.3rem;
+}
+
+nav header {
+  position: relative;
+  height: 80px;
+  padding: 20px 0 0 15px;
+  font-size: 16px;
+  color: #fff;
+  background: #333333;
+}
+
+nav header span {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+  border: 1px solid #fff;
+}
+
+nav header span:before {
+  content: '\f007';
+  font: normal 20px fontawesome;
+  top: 7px;
+  left: 9px;
+}
+
+nav header a:before {
+  content: '\f08b';
+  font: normal 20px fontawesome;
+  top: 28px;
+  right: 15px;
+}
+
+nav ul span {
+  display: block;
+  padding: 15px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  border-bottom: 1px solid #333333;
+}
+
+nav ul a {
+  position: relative;
+  display: block;
+  padding: 15px 15px 17px 50px;
+  color: #fff;
+  border-bottom: 1px solid #333333;
+}
+
+nav ul a:hover,
+nav ul a.active {
+  background: #535353;
+}
+
+nav ul a:before {
+  font: normal 16px fontawesome;
+  top: 15px;
+  left: 18px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li img {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  height: 1.5rem;
+  z-index: 6;
+  pointer-events: none;
+}
+
+main {
+  flex: 1;
+  padding: 25px;
+  background: #f5f5f5;
+}
+
+main .bar {
+  height: 80px;
+  margin: -25px -25px 25px -25px;
+  padding: 0 29px;
+  line-height: 76px;
+  font-size: 24px;
+  font-weight: 400;
+  background: #ddd;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 3rem;
+}
+
+main .bar button {
+    font-size: 0.9rem;
+    line-height: 2rem;
+    text-decoration: none;
+    width: 8rem;
+    text-align: center;
+    background: transparent;
+    padding: 0.1rem 0.5rem;
+    border: 2px solid #f7d700;
+    border-radius: 0;
+    color: #2c2c2c;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+}
+
+main .bar button:hover {
+  background: #f7d700;
+  
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  border-bottom: 0;
+  width: 18rem;
+}
+
+.user-list a{
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid lightgray;
+  transition: all 0.3s ease;
+}
+
+.user-list a:hover {
+  background: #DDDDDD;
+}
+
+.pages {
+  display: flex;
+  margin-top: 0.5rem;
+  border-left: 1px solid lightgray;
+  width: 19rem;
+}
+
+.pages a {
+  padding: 0.4rem;
+  width: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid lightgray;
+  border-left: 0;
+  text-decoration: none;
+  color: gray;
+  transition: all 0.3s ease;
+}
+
+.listdown > p {
+  margin: 1rem 0;
+}
+
+.search {
+  width: 18rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.search input {
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.pan > p {
+  margin-bottom: 1rem;
+}
+
+#refURL {
+  position: absolute;
+  top: -10rem;
+  left -10rem;
+}
+
+.nowrapline {
+  white-space: nowrap;
+}
+
+.pan .error {
+  margin: 0 0 1rem 0;
+  background: #FFBABA;
+  padding: 0.5rem 0.7rem;
+  width: 18rem;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  color: #D8000C;
+  display: flex;
+  align-items: center;
+}
+
+hr {
+  width: 18rem;
+  margin-bottom: 1rem;
+}
+
+.success {
+  margin: 0 0 1rem 0;
+  background: #dff0d8;
+  padding: 0.5rem 0.7rem;
+  width: 18rem;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  color: #3c763d;
+  display: flex;
+  align-items: center;
+}
+
+.search a {
+  margin: 0 0.9rem 0 0;
+  font-size: 0.9rem;
+  padding-top: 0.4rem;
+  color: gray;
+  text-decoration: none;
+}
+
+.search button{
+  padding: 0.4rem 1rem;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.addbalance {
+  width: 18rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.addbalance input {
+  width: 100%;
+  padding: 0 0.5rem;
+  height: 1.8rem;
+}
+
+.addbalance p {
+  margin-right: 0.9rem;
+}
+
+.addbalance button {
+  padding: 0.4rem 1rem;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.flex-grid {
+  display: flex;
+}
+
+.flex-grid > div {
+  flex: 1;
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.flex-grid > div:last-child {
+  margin-right: 0;
+}
+
+.flex-grid h2 {
+  margin: -15px -15px 15px -15px;
+  padding: 12px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  border-bottom: 1px solid #ddd;
+}
+
+.flex-grid li {
+  position: relative;
+  margin: 0 0 10px;
+  padding: 0 0 0 25px;
+}
+
+.flex-grid li:before {
+  content: '\f00c';
+  font: normal 16px fontawesome;
+  top: 0;
+  left: 0;
+  color: #999;
+}
+
+.loginroom {
+  background: #f5f5f5;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginbox {
+  width: 18rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  width: 28rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.field input {
+  padding: 0.4rem 0.6rem;
+  margin: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.loginbox input{
+  padding: 0.7rem 1rem;
+  margin: 0.3rem 0;
+  font-size: 1rem;
+}
+
+.loginbox .submit {
+  border: 2px solid #f7d700;
+  background: transparent;
+  transition: all 0.3s ease;
+  color: #404040;
+  cursor: pointer;
+  outline: none;
+}
+
+.loginbox .submit:hover {
+  background: #f7d700;
+}
+
+.loginbox .error {
+  margin: 0 0 0.5rem 0;
+  background: #FFBABA;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  color: #D8000C;
+  display: flex;
+  align-items: center;
+}
+
+.loginbox p {
+  margin: 0.5rem 0;
+}
+
+.loginbox .reset {
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+  color: #535353;
+}
+
+
+/**** infopie ***/
+
+.arrow
+{
+    position: relative;
+    height: 0px;
+    width: 0px;
+    border-top: 18px solid #dd1111;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    position:absolute;
+    bottom:40px;
+    left:57px;
+    z-index:1;
+    animation: load-arrow 1.6s linear;
+    animation-fill-mode:forwards;
+    -webkit-animation: load-arrow 1.6s linear;
+    -webkit-animation-fill-mode:forwards;
+}
+
+@keyframes load-arrow
+{
+    from { transform: translate(0,0); }
+    to { transform: translate(0,55px); }
+}
+
+@-webkit-keyframes load-arrow
+{
+    from { -webkit-transform: translate(0,0); }
+    to { -webkit-transform: translate(0,55px); }
+}
+
+.pie
+{
+    width: 140px;
+    height: 140px;
+    position: relative;
+    border-radius: 140px;
+    background-color: #DD1111;
+    float:left;
+    margin:20px 0px 70px 0px;
+}
+
+.pie .title
+{
+    position:absolute;
+    bottom: -60px;
+    text-align: center;
+    width:100%;
+}
+
+.mask
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.pie1 .inner-right
+{
+    transform: rotate(160deg);
+    animation: load-right-pie-1 1s linear;
+    -webkit-animation: load-right-pie-1 1s linear;
+    -webkit-transform: rotate(160deg);
+}
+
+@keyframes load-right-pie-1
+{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(160deg);}
+}
+
+@-webkit-keyframes load-right-pie-1
+{
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(160deg);}
+}
+
+.outer-left
+{
+    clip: rect(0px 70px 140px 0px);
+}.outer-right
+{
+    clip: rect(0px 140px 140px 70px);
+}
+
+.inner-left
+{
+    background-color: #710000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    clip: rect(0px 70px 140px 0px);
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+}
+.inner-right
+{
+    background-color: #710000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    clip: rect(0px 70px 140px 0px);
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.content
+{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background-color:#fff;
+    position:absolute;
+    top:20px;
+    left:20px;
+    line-height: 100px;
+    font-family:arial, sans-serif;
+    font-size:35px;
+    text-align: center;
+    z-index:2;
+}
+
+.content span
+{
+    opacity: 0;
+    animation: load-content 3s;
+    animation-fill-mode:forwards;
+    animation-delay: 0.6s;
+    -webkit-animation: load-content 3s;
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-delay: 0.6s;
+}
+
+@keyframes load-content
+{
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+@-webkit-keyframes load-content
+{
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+/*
+** Media Queries
+***********************************************************/
+@media screen and (max-width: 1000px) {
+  .flex-grid {
+    flex-direction: column;
+  }
+
+  .flex-grid > div {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  nav {
+    left: -250px;
+  }
+  .wrapper {
+    margin-left: 0;
+  }
+  nav .close {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .field {
+    flex-wrap: wrap;
+    width: 16rem;
+    margin-bottom: 1rem;
+  }
+  main{
+    padding: 0;
+  }
+  main .bar {
+    margin: 0;
+    padding: 0 15px;
+  }
+  .logo{
+    height: 2.5rem;
+  }
+  main .bar button {
+    font-size: 0.8rem;
+    padding: 0;
+    width: 6rem;
+  }
+}

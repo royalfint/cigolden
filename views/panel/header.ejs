@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Админ панель</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="./css/admin.css">
+    </head>
+    <body>
+        <input id="refURL" type="text" value="http://cigolden-royalfint.c9users.io/r/<%= currentUser.id %>">
+        <div class="wrapper">
+            <nav>
+              <header>
+                Привет, <%= currentUser.username %>
+                <div class="close" onclick="closeNav()"><img src="./img/cancel.svg"></div>
+              </header>
+              <ul>
+                <li><span>Навигация</span></li>
+                <li><img src="./img/light-bulb.svg" alt=""> <a>Главная</a></li>
+                <li><img src="./img/wallet.svg" alt=""> <a href="/wallet">Баланс</a></li>
+                <li><img src="./img/network.svg" alt=""> <a href="/refs1/0">Рефералы 1 ур.</a></li>
+                <li><img src="./img/network.svg" alt=""> <a href="/refs2/0">Рефералы 2 ур.</a></li>
+                <li><img src="./img/money.svg" alt=""> <a href="/withdrawal">Вывод</a></li>
+                <li><img src="./img/gift.svg" alt=""> <a>Бонусы</a></li>
+                <li><img src="./img/gear.svg" alt=""> <a>Настройки</a></li>
+                <li><img src="./img/exit.svg" alt=""> <a href="/logout">Выйти</a></li>
+              </ul>
+            </nav>
+            <main>
+              <div class="bar">
+                <div>
+                  <img src="./img/logo-dark.svg" class="logo" onclick="openNav()"></img>
+                </div>
+                
+                <button onclick="copyRef()">Пригласить</button>
+              </div>

@@ -1,0 +1,23 @@
+<% include ./header %>
+
+              <div class="flex-grid">
+                  <div>
+                    <h2>Управление балансом аккаунтов</h2>
+                    <form action="/admin/users/" class="search" method="post">
+                        <input type="text" name="search">
+                        <button>Поиск</button>
+                    </form>
+                    <div class="user-list">
+                    <% users.forEach(function(user_) { %>
+                        <a href="/admin/user/<%= user_._id %>"><%= user_.username %></a>
+                    <% }); %>
+                    </div>
+                    <div class="pages">
+                        <% for (i = 0; i < pages; i++) { %>
+                            <a href="/admin/users/<%= i %>"> <%= i+1 %></a>
+                        <% } %>
+                    </div>
+                  </div>
+              </div>
+
+            <% include ./footer %>

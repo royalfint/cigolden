@@ -1,0 +1,43 @@
+<% include ./header3 %>
+
+              <div class="flex-grid">
+                  <div class="listdown">
+                    <h2>Список косвенно приглашенных вами людей</h2>
+                     <form class="search" method="post">
+                        <a href="/refs2/0">Назад</a>
+                        <!--input type="text" name="search">
+                        <button>Поиск</button-->
+                    </form>
+                    <hr>
+                    <% if(error && error.length > 0) { %>
+                      <div class="error"><%= error %></div>
+                    <% } %>
+                    <% if(success && success.length > 0) { %>
+                      <div class="success"><%= success %></div>
+                    <% } %>
+                    <p>Логин: <%= user.username %></p>
+                    <% if(user.active) { %>
+                    <p>Сумма выплаты: <%= reward %></p>
+                    <div class="pie pie1">
+                        <div class="title">Дней осталось до выплаты.</div>
+                        <div class="outer-right mask">
+                            <div class="inner-right"></div>
+                        </div>
+                    
+                        <div class="outer-left mask">
+                            <div class="inner-left"></div>
+                        </div>
+                        <div class="content">
+                            <span><%= reward_date %></span>
+                        </div>
+                        <div class="arrow"></div>
+                    </div>
+                    <% } else { %>
+                        <p>Пользователь еще не совершил депозита.</p>
+                    <% } %>
+                  </div>
+              </div>
+
+     </main>
+  </div>
+<% include ./footer %>

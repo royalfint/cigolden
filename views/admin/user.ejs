@@ -1,0 +1,53 @@
+<% include ./header %>
+              <div class="flex-grid">
+                  <div class="pan">
+                    <form action="/admin/users/" class="search" method="post">
+                        <a href="/admin/users/0">Назад</a>
+                        <!--input type="text" name="search">
+                        <button>Поиск</button-->
+                    </form>
+                    <hr>
+                    <% if(error && error.length > 0) { %>
+                      <div class="error"><%= error %></div>
+                    <% } %>
+                    <% if(success && success.length > 0) { %>
+                      <div class="success"><%= success %></div>
+                    <% } %>
+                    <p>Логин: <%= user.username %></p>
+                    <p>Статус: <%= user.status %></p>
+                    <p>Баланс: <%= user.balance.toFixed(2) %></p>
+                    <p>Чистая прибыль: <%= user.net_profit.toFixed(2) %></p>
+                    <p>Предстоящая прибыль: <%= future_profit.toFixed(2) %></p>
+                    <p>След. Начисление: <%= user.next_payment %></p>
+                    <p>Прибыль можно вывести: <%= user.widthdrawal_date %></p>
+                    <p>Баланс можно вывести: <%= user.exit_date %></p>
+                    <p>Дата Регистрации: <%= user.signup_date %></p>
+                    <form action="/admin/action/balance" method="POST" class="addbalance">
+                      <input type="hidden" name="hash" value="<%= userhash %>">
+                      <input type="number" name="amount" placeholder="Добавить на баланс">
+                      <button>Внести</button>
+                    </form>
+                    <form action="/admin/action/percent" method="POST" class="addbalance">
+                      <p>Процент доходности</p>
+                      <input type="hidden" name="hash" value="<%= userhash %>">
+                      <input type="number" name="percent" value="<%= user.deposit_percent %>" placeholder="% Доходности">
+                      <button>Сменить</button>
+                    </form>
+                    <form action="/admin/action/ref1" method="POST" class="addbalance">
+                      <p class="nowrapline">Процент реф. 1ур.</p>
+                      <input type="hidden" name="hash" value="<%= userhash %>">
+                      <input type="number" name="percent" value="<%= user.refs1_percent %>" placeholder="% Доходности">
+                      <button>Сменить</button>
+                    </form>
+                    <form action="/admin/action/ref2" method="POST" class="addbalance">
+                      <p class="nowrapline">Процент реф. 2ур</p>
+                      <input type="hidden" name="hash" value="<%= userhash %>">
+                      <input type="number" name="percent" value="<%= user.refs2_percent %>" placeholder="% Доходности">
+                      <button>Сменить</button>
+                    </form>
+                  </div>
+              </div>
+            </main>
+          </div>
+    </body>
+</html>

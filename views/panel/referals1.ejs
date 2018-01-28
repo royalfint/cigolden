@@ -1,0 +1,21 @@
+<% include ./header_2 %>
+
+              <div class="flex-grid">
+                  <div>
+                    <h2>Список прямо приглашенных вами людей</h2>
+                    <div class="user-list">
+                    <% user.refs1.forEach(function(user_) { %>
+                        <a href="/refs1/user/<%= user_._id %>"><%= user_.username %></a>
+                    <% }); %>
+                    </div>
+                    <div class="pages">
+                        <% for (i = 0; i < pages; i++) { %>
+                            <a href="/refs1/<%= i %>"> <%= i+1 %></a>
+                        <% } %>
+                    </div>
+                  </div>
+              </div>
+
+     </main>
+  </div>
+<% include ./footer %>

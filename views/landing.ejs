@@ -1,0 +1,275 @@
+<% include ./partials/header %>
+
+    <div class="hero">
+        <img src="./img/logo.svg" class="logo" alt="">
+        <!--button id="menu" class="hamburger hamburger--collapse" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </button-->
+        <div id="menu">
+            <% if(!currentUser) { %>
+                <a href="/login">Войти</a>
+                <a href="/signup">Регистрация</a>
+            <% } else { %>
+                <a href="/wallet">Личный кабинет</a>
+            <% } %>
+        </div>
+        <div>
+            <h1>Constant Investment</h1>
+            <p>Наша компания занимается инвестициями и доверительным управлением. Мы выбираем активы, которые тщательно диверсифициваны
+                и позволят вам начать стабильно зарабатывать уже сейчас.</p>
+            <div class="buttons">
+                <a href="#">Подробнее</a>
+                <a href="#" class="yellow">Присоединится</a>
+            </div>
+        </div>
+        <img src="./img/logo-big.svg" class="logo-big" alt="">
+    </div>
+
+    <!--div class="overlay">
+        <a href="#">Войти</a>
+        <a href="#">Регистрация</a>
+    </div-->
+
+    <div class="adv">
+        <div class="sign">
+            <img src="./img/sign.svg" alt="">
+            <div>
+                <h2>Уникальное направление бизнеса</h2>
+                <p>Данный вид инвестиций в Казахстане появился относительно недавно. Мы являемся одной из первых компаний развивающихся
+                    в данном направлении.</p>
+            </div>
+        </div>
+        <div class="fists">
+            <img src="./img/team.svg" alt="">
+            <div>
+                <h2>Профессиональные управленческие кадры</h2>
+                <p>Люди работающие в нашей компании имеют неограниченное количество возможностей чтобы изменить ваш взгляд на
+                    смарт инвестиции.</p>
+            </div>
+        </div>
+        <div class="laptop">
+            <img src="./img/pig.svg" alt="">
+            <div>
+                <h2>Проработанный проект от А до Я</h2>
+                <p>Проработанная модель бизнеса из Европы была взята в руки нашими профессионалами и внедрена на Казахстанский
+                    рынок инвестиций.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="whyus">
+        <h3>Почему мы?</h3>
+        <h4>Наши преимущества</h4>
+        <div class="yellow"></div>
+        <div class="cards">
+            <div class="box-shadow">
+                <img src="./img/suit.jpg" alt="">
+                <h5>Команда</h5>
+                <p>Главное наше отличие от других это - слаженная работа нашей команды и вера наших инвесторов в достижении
+                    общих целей.</p>
+            </div>
+            <div class="box-shadow">
+                <img src="./img/goal.jpg" alt="">
+                <h5>Цель</h5>
+                <p>Построить прибыльный и эффективный бизнес в конкурентной среде по собственному уникальному сценарию и стратегии.</p>
+            </div>
+            <div class="box-shadow">
+                <img src="./img/strategy.jpg" alt="">
+                <h5>Стратегия</h5>
+                <p>Уникальная стратегия 40-30-30 разработанная нашими специалистами дает возможность иметь доход не менее 10%
+                    каждому инвестору.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="aboutus">
+        <img src="./img/head.jpg" class="box-shadow" alt="">
+        <h4>Наша история</h4>
+        <h3 class="white">Немного о нас</h3>
+        <div class="articles">
+            <p>Лорем ипсум долор сит амет, ерос юсто петентиум сеа ут, веро солум минимум нец ех. Либрис сусципиантур ат пер.
+                Еам но саепе цоммодо. Ад про инани елитр популо, цу зрил латине партиендо яуи, усу сонет перицула реформиданс
+                ан. Пурто ерипуит яуи но, лудус семпер вих ан. Цу мазим еуисмод усу, пурто ферри алияуандо меа еи. Еос адмодум
+                фацилисис омиттантур ех. Ут яуи веро сале, ерос мандамус постулант ех при, ех татион долоре постеа яуи. Фуиссет
+                ехпетенда те</p>
+            <p>Фуиссет ехпетенда те иус, нам доцтус дефинитионем еа, натум медиоцрем глориатур ест еи. Вел аетерно инермис цонсеяуат
+                еи, ан меа дицам яуидам, цум ет ферри мазим. Ут еам муциус нумяуам витуперата, ин тале инструцтиор еам. Ет
+                нец тимеам фацилиси инвенире, пер унум доцтус импетус ан, легере репудиандае волуптатибус меи ид. Меи ад
+                стет иуварет, цум уллум </p>
+        </div>
+    </div>
+
+    <div class="centered">
+        <div class="rectFact box-shadow">
+            <div class="video">
+
+            </div>
+            <div class="text">
+                <h4>А вы знали?</h4>
+                <h3>Более 600 клиентов уже доверяют нам.</h3>
+                <p>Мы ценим профессионализм, доверительность друг-другу, долгосрочные отношения. Мы уверены что вы - наши новые
+                    партнеры это те люди, которых не останавливает все новое, чтобы получить захватывающее удовольствие от
+                    новых достижений и побед. Вы доверяете нам а мы готовы открыть перед вами новые двери в будущее!</p>
+                <a href="#">Подробнее</a>
+            </div>
+        </div>
+        <div class="rectFact box-shadow">
+            <div class="text reverse">
+                <h4>А вы знали?</h4>
+                <h3>Мы эксперты в этой области уже давно.</h3>
+                <p>Успех любого бизнеса заключается в продуманном и разработанном проекте от начала идеи и до конца его внедрения
+                    на рынок. Также немаловажную роль играют люди, которые разрабатывали проект, и те люди которые присоединятся
+                    к данному проекту на самом истоке глобального развития.</p>
+                <a href="#">Подробнее</a>
+            </div>
+            <div class="conf">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="quote">
+        <div class="face"></div>
+        <div class="saying">
+            <img src="./img/quote.svg" alt="">
+            <p>Наша цель - быть в сердце сферы предоставления финансовых услуг для расширения бизнесов по всему миру.</p>
+            <h3>Дядя Вася</h3>
+            <h4>Директор компании</h4>
+        </div>
+    </div>
+
+    <div class="whyus">
+        <h3>Последние новости</h3>
+        <h4>подзаголовок тут</h4>
+        <div class="yellow"></div>
+        <div class="cards">
+            <div class="box-shadow">
+                <img src="./img/suit.jpg" alt="">
+                <h5>Заголовок новости</h5>
+                <p>Главное наше отличие от других это - слаженная работа нашей команды и вера наших инвесторов в достижении
+                    общих целей.</p>
+            </div>
+            <div class="box-shadow">
+                <img src="./img/goal.jpg" alt="">
+                <h5>Заголовок новости</h5>
+                <p>Построить прибыльный и эффективный бизнес в конкурентной среде по собственному уникальному сценарию и стратегии.</p>
+            </div>
+            <div class="box-shadow">
+                <img src="./img/strategy.jpg" alt="">
+                <h5>Заголовок новости</h5>
+                <p>Уникальная стратегия 40-30-30 разработанная нашими специалистами дает возможность иметь доход не менее 10%
+                    каждому инвестору.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback">
+        <h3 class="white">Отзывы клиентов</h3>
+        <div class="controls">
+            <img src="./img/left.svg" class="leftslide" alt="">
+            <img src="./img/right.svg" class="rightslide" alt="">
+        </div>
+        <div class="slide-wrapper">
+            <div class="cycle-slideshow" data-cycle-swipe=true data-cycle-swipe-fx=scrollHorz data-cycle-slides="div.slide" data-cycle-prev=".leftslide"
+                data-cycle-next=".rightslide" data-cycle-easing="linear" data-cycle-speed="500" data-cycle-timeout="5000" data-cycle-fx="scrollHorz">
+                <div class="slide">
+                    <div class="mainScreen">
+                        <p>Молодая, быстрорастущая, динамичная компания, благодаря которой можно быть спокойно уверенным о своем
+                            будущем и будущем своих детей. Стабильность и финансовая независимость это Constant investment,
+                            инвестируй правильно свои деньги.</p>
+                        <div class="author">
+                            <div>
+                                <img src="./img/quote.svg" alt="">
+                            </div>
+                            <div>
+                                <h3 class="white">Дядя Вася</h3>
+                                <h4 class="gray">Довольный клиент</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="mainScreen">
+                        <p>Молодая, быстрорастущая, динамичная компания, благодаря которой можно быть спокойно уверенным о своем
+                            будущем и будущем своих детей. Стабильность и финансовая независимость это Constant investment,
+                            инвестируй правильно свои деньги. Молодая, быстрорастущая, динамичная компания, благодаря которой можно быть спокойно уверенным о своем
+                            будущем и будущем своих детей.</p>
+                        <div class="author">
+                            <div>
+                                <img src="./img/quote.svg" alt="">
+                            </div>
+                            <div>
+                                <h3 class="white">Дядя Вася</h3>
+                                <h4 class="gray">Довольный клиент</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="centered">
+        <div class="contactus">
+            <div class="ask">
+                <h3>Хотите чтобы мы перезвонили?</h3>
+                <div class="yellow"></div>
+                <p>Пожалуйста заполните форму и мы позвоним вам в ближайшее время.</p>
+            </div>
+            <form>
+                <input type="text" placeholder="Имя">
+                <input type="text" placeholder="E-mail*">
+                <input type="text" placeholder="Тема*">
+                <input type="text" placeholder="Компания">
+                <textarea name="" id="" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                <a href="#" class="submit">Отправить</a>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <img src="./img/logo.svg" alt="">
+            <p>
+                <img src="./img/location.svg" style="position: relative; left: -0.3rem;" alt=""> Момышулы 27</p>
+            <p>
+                <img src="./img/phone.svg" alt=""> +7 (776) 197-76-56</p>
+            <p>
+                <img src="./img/mail.svg" alt=""> info@cigolden.com</p>
+        </div>
+        <div>
+            <h3>Последние новости</h3>
+            <h4>Я тону под весом груза</h4>
+            <h5>4 января, 2018</h5>
+            <h4>Я тону под весом груза</h4>
+            <h5>4 января, 2018</h5>
+            <h4>Я тону под весом груза</h4>
+            <h5>4 января, 2018</h5>
+        </div>
+        <div>
+            <h3>Карта сайта</h3>
+            <a href="#">Главная</a>
+            <a href="#">Связаться с нами</a>
+            <a href="#">Карта сайта</a>
+            <a href="#">Карта</a>
+            <a href="#">Позвонить</a>
+            <a href="#">Личный Кабинет</a>
+        </div>
+        <div>
+            <h3>Напишите нам</h3>
+            <form class="small">
+                <input type="text" placeholder="Имя*">
+                <input type="text" placeholder="Тема*">
+                <textarea name="" id="" cols="30" placeholder="Сообщение*" rows="3"></textarea>
+                <a class="submit">Отправить</a>
+            </form>
+        </div>
+    </footer>
+
+    <div class="copy">
+        <p>Все права защищены. Constant Investment. 2018.</p>
+    </div>
+
+<% include ./partials/footer %>

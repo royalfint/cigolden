@@ -1,0 +1,1313 @@
+/* start css */
+
+@font-face {
+    font-family: ProximaBlack;
+    src: url('../fonts/ProximaNova-Black.otf');
+}
+
+@font-face {
+    font-family: Proxima;
+    src: url('../fonts/ProximaNova-Reg.otf');
+}
+
+@font-face {
+    font-family: ProximaBold;
+    src: url('../fonts/ProximaNova-Bold.otf');
+}
+
+@font-face {
+    font-family: ProximaLight;
+    src: url('../fonts/ProximaNova-Light.otf');
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: Proxima;
+}
+
+body.scroll {
+    overflow: hidden;
+}
+
+/*
+#menu {
+    position: absolute;
+    right: 15.6rem;
+    top: 1.3rem;
+    outline: none;
+    z-index: 119;
+}
+
+#menu .hamburger-inner, 
+#menu .hamburger-inner:after, 
+#menu .hamburger-inner:before {
+    background: #fff;
+}*/
+
+#menu {
+    position: absolute;
+    right: 15.6rem;
+    top: 1.3rem;
+    outline: none;
+    z-index: 119;
+    padding-top: 1rem;
+    display: flex;
+}
+
+#menu a{
+    margin: 0 1rem;
+    font-size: 1.1rem;
+    color: #fff;
+    padding: 0 0.1rem 0 0;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#menu a:hover {
+    border-color: #fff;
+}
+
+/*** hero ***/
+
+.hero {
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100%;
+    background: url(../img/hero.jpg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    padding-left: 15.6rem;
+}
+
+.overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #282828;
+    z-index: 100;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay a {
+    font-size: 1.25rem;
+    margin: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.overlay.full {
+    display: flex;
+}
+
+.logo {
+    position: absolute;
+    top: 2rem;
+    left: 15.6rem;
+    height: 3rem;
+}
+
+.logo-big {
+    position: absolute;
+    right: 11rem;
+    bottom: 0;
+    height: 45rem;
+    z-index: 6;
+    opacity: 0.3;
+}
+
+.hero h1 {
+    font-size: 4.3rem;
+    font-family: ProximaBold;
+    color: #fff;
+    margin-bottom: 1.2rem;
+    MARGIN-TOP: 5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.hero p {
+    color: #fff;
+    font-size: 1.25rem;
+    width: 44.5rem;
+    line-height: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.hero .buttons {
+    display: flex;
+}
+
+.buttons a {
+    color: #fff;
+    font-size: 1.25rem;
+    width: 44.5rem;
+    line-height: 2rem;
+    text-decoration: none;
+    border: 2px solid #fff;
+    width: 10rem;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-top: 1.5rem;
+    margin-right: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.buttons a:hover {
+    background: #fff;
+    color: #000;
+}
+
+.buttons a.yellow {
+    background: #f7d700;
+    border: 2px solid #f7d700;
+    color: #2c2c2c;
+    transition: all 0.3s ease;
+}
+
+.buttons a.yellow:hover {
+    background: transparent;
+    color: #f7d700;
+}
+
+.adv {
+    display: flex;
+}
+
+.adv > div {
+    width: 33.3%;
+    display: flex;
+    padding: 4rem 4rem 4rem 3rem;
+    box-sizing: border-box;
+}
+
+.adv img {
+    height: 3.5rem;
+    margin-right: 1.5rem;
+}
+
+.adv h2 {
+    font-size: 1.7rem;
+    color: #fff;
+    font-family: ProximaBold;
+    margin-bottom: 1rem;
+}
+
+.adv p {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+.sign {
+    background: url(../img/sign.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.fists {
+    background: url(../img/fists.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.laptop {
+    background: url(../img/laptop.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.whyus {
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.whyus h3, .aboutus h3, .feedback h3, .ask h3 {
+    font-size: 3.3rem;
+    color: #1f1f1f;
+    font-family: ProximaBold;
+    margin: 0;
+}
+
+.whyus h4, .aboutus h4, .text h4 {
+    font-size: 1.25rem;
+    color: #8e8e8e;
+    text-transform: uppercase;
+    font-family: ProximaLight;
+    margin: 0;
+}
+
+.whyus .yellow, .ask .yellow {
+    height: 6px;
+    width: 60px;
+    background: #f7d700;
+    margin: 1.7rem 0 3.75rem 0;
+}
+
+.ask .yellow {
+    margin-bottom: 1.7rem;
+}
+
+.whyus .cards {
+    display: flex;
+    justify-content: center;
+}
+
+.cards > div {
+    width: 28rem;
+    margin: 0 1rem;
+}
+
+.box-shadow {
+    box-shadow: 0px 15px 24px 0px rgba(0, 0, 0, 0.15);
+}
+
+.cards > div img {
+    width: 100%;
+    height: auto;
+}
+
+.cards > div h5 {
+    font-size: 1.375rem;
+    text-transform: uppercase;
+    font-family: ProximaBold;
+    color: #3d3c39;
+    margin: 0;
+    padding: 2.8rem 0 1rem 2rem;
+}
+
+.cards > div p {
+    color: #84888c;
+    font-size: 1.25rem;
+    padding: 0 2rem 2.4rem 2rem;
+}
+
+.aboutus {
+    background: url(../img/about.jpg) no-repeat center;
+    background-size: cover;
+    padding: 0 0 12rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+.aboutus img {
+    position: relative;
+    top: -4rem;
+}
+
+.aboutus .articles {
+    display: flex;
+}
+
+.aboutus .articles > p {
+    width: 43rem;
+    margin: 2rem 1.5rem 0 1.5rem;
+}
+
+.articles p {
+    color: #c1bfbf;
+    font-size: 1.25rem;
+}
+
+h3.white {
+    color: #fff !important;
+}
+
+h4.gray {
+    color: #9c9b9b;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.rectFact {
+    width: 90rem;
+    box-sizing: border-box;
+    display: flex;
+    height: 40.5rem;
+    position: relative;
+    top: -4rem;
+}
+
+.rectFact > div {
+    width: 50%;
+}
+
+.rectFact .video {
+    background: url(../img/yellow.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.rectFact .conf {
+    background: url(../img/conf.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.rectFact .text{
+    padding: 5.7rem 5rem;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.text.reverse {
+    background: #232323;
+}
+
+.text h3 {
+    color: #1f1f1f;
+    font-size: 3.3rem;
+    font-size: ProximaBold;
+    line-height: 3rem;
+    margin: 1.5rem 0;
+}
+
+.text.reverse h3 {
+    color: #fff;
+}
+
+.text p {
+    color: #676767;
+    font-size: 1.25rem;
+    line-height: 1.7rem;
+    padding-top: 0.5rem;
+}
+
+.text.reverse p, .text.reverse h4 {
+    color: #d6d4d4;
+}
+
+.text a {
+    color: #362f2d;
+    font-size: 1.25rem;
+    width: 44.5rem;
+    text-decoration: none;
+    border: 2px solid #362f2d;
+    width: 10rem;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    margin-top: 5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 6rem;
+}
+
+.text.reverse a {
+    color: #000000;
+    border-color: #fff;
+    background: #fff;
+}
+
+.text a:hover {
+    background: #362f2d;
+    color: #fff;
+}
+
+.quote {
+    width: 100%;
+    display: flex;
+    margin: 6rem 0 2rem 0;
+}
+
+.quote > div {
+    width: 50%;
+    box-sizing: border-box;
+    height: 36.25rem;
+}
+
+.quote .face {
+    background: url(../img/face.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.quote .saying {
+    background: #f3f3f3;
+    padding: 8rem 5.3rem;
+}
+
+.saying img {
+    height: 4.7rem;
+    margin: 0 0 2.5rem 1.5rem;
+}
+
+.saying p {
+    color: #343434;
+    font-size: 1.875rem;
+    font-family: ProximaBold;
+    line-height: 3rem;
+}
+
+.saying h3, .author h3 {
+    color: #676565;
+    font-size: 1.25rem;
+    margin: 2.5rem 0 0.5rem 1.5rem;
+}
+
+.saying h4, .author h4 {
+    color: #d1d1d1;
+    font-size: 1rem;
+    margin: 0 0 0 1.5rem;
+    text-transform: uppercase;
+}
+
+.feedback {
+    background: url(../img/feedback.jpg) no-repeat center;
+    background-size: cover; 
+    margin-top: 3rem;
+    padding: 6rem 0 8rem 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls {
+    position: absolute;
+    left: calc(50% - 45px);
+    bottom: 4rem;
+}
+
+.controls img{
+    height: 2.5rem;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.controls img:hover {
+    transform: scale(1.1);
+}
+
+.slide-wrapper,
+.slide {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	box-sizing: border-box;
+}
+
+.slide-wrapper {
+    width: 56rem;
+}
+
+.mainScreen {
+	z-index: 1;
+	position: relative;
+    height: 16.25rem;
+    box-sizing: border-box;
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainScreen p {
+    color: #a6a8aa;
+    font-size: 1.25rem;
+    font-family: ProximaLight;
+    text-align: center;
+}
+
+.author {
+    display: flex;
+    align-items: flex-end;
+}
+
+.author > div {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.author img {
+    height: 3.5rem;
+}
+
+.contactus {
+    padding: 5rem 0 8rem 0;
+    display: flex;
+}
+
+.contactus .ask {
+    display: flex;
+    flex-direction: column;
+    width: 37.5rem;
+    margin-right: 8rem;
+}
+
+.ask h3 {
+    line-height: 3.5rem;
+}
+
+.ask p {
+    font-size: 1.3rem;
+    color: #a6a8aa;
+}
+
+form {
+    width: 43.75rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+input, textarea {
+    width: calc(50% - 0.7rem);
+    margin-bottom: 2rem;
+    background: #f5f5f5;
+    padding: 1.3rem 2rem;
+    color: #969393;
+    font-size: 1.15rem;
+    border: 0;
+    outline: none;
+    font-family: ProximaLight;
+}
+
+textarea {
+    width: 100%;
+}
+
+form .submit {
+    font-size: 1.25rem;
+    width: 44.5rem;
+    line-height: 2rem;
+    text-decoration: none;
+    width: 10rem;
+    text-align: center;
+    border-radius: 2rem;
+    background: #f7d700;
+    padding: 1rem 0.5rem;
+    border: 2px solid #f7d700;
+    color: #2c2c2c;
+    transition: all 0.3s ease;
+}
+
+form .submit:hover {
+    background: transparent;
+}
+
+footer{
+    background: #1f1f1f;
+    padding: 5rem 0 3rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer > div{
+    margin: 0 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+footer > div > img {
+    height: 4rem;
+    margin-bottom: 2rem;
+}
+
+footer > div > p {
+    display: flex;
+    align-items: center;
+    color: #a19f9f;
+    font-size: 1.05rem;
+    margin: 0.5rem 0;
+}
+
+footer > div > p > img {
+    height: 1.6rem;
+    margin-right: 1rem;
+}
+
+footer > div > h3 {
+    color: #fff;
+    font-family: ProximaBold;
+    font-size: 1.25rem;
+    padding: 0 0 1rem 0;
+}
+
+footer > div > h4 {
+    color: #a19f9f;
+    font-size: 1.1rem;
+    margin: 1rem 0 0 0;
+    font-family: ProximaLight;
+}
+
+footer > div > h5 {
+    color: #716f6f;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+footer > div > a {
+    color: #a19f9f;
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0 0;
+    text-decoration: none;
+    font-family: ProximaLight;
+}
+
+.copy {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    background: #282828;
+}
+
+.copy p {
+    color: #a19f9f;
+    font-size: 1.1rem;
+}
+
+form.small {
+    width: 20rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+form.small input, form.small textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    background: #2e2e2e;
+    padding: 0.8rem 1.3rem;
+    color: #969393;
+    font-size: 1.15rem;
+    border: 0;
+    outline: none;
+    font-family: ProximaLight;
+}
+
+form.small .submit {
+    font-size: 1.25rem;
+    width: 44.5rem;
+    line-height: 2rem;
+    text-decoration: none;
+    width: 10rem;
+    text-align: center;
+    background: #f7d700;
+    padding: 0.7rem 0.5rem;
+    border: 2px solid #f7d700;
+    border-radius: 0;
+    color: #2c2c2c;
+    transition: all 0.3s ease;
+}
+
+form.small .submit:hover {
+    background: transparent;
+    color: #fff;
+}
+
+@media screen and (max-width: 1800px) {
+    .hero {
+        padding-left: 12.6rem;
+    }
+    .logo {
+        left: 12.6rem;
+    }
+    #menu {
+        right: 11.9rem;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .hero {
+        padding-left: 8.6rem;
+    }
+    .logo {
+        left: 8.6rem;
+    }
+    #menu { right: 7.9rem; }
+}
+
+@media screen and (max-width: 1650px) {
+    .adv > div {
+        padding: 3rem 2rem 2rem 2rem;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .hero {
+        padding-left: 6rem;
+    }
+    .logo {
+        left: 6rem;
+    }
+    #menu {
+        right: 5.3rem;
+    }
+    .logo-big {
+        right: 5rem;
+    }
+}
+
+
+@media screen and (max-width: 1500px) {
+    /*advantages*/
+    .adv > div {
+        padding: 3rem 3.1rem 3rem 3rem;
+    }
+    .adv h2 {
+        padding-left: 5rem;
+        font-size: 1.4rem;
+    }
+    .adv img {
+        position: absolute;
+    }
+    /*cards and news */
+    .cards > div {
+        width: 24rem;
+    }
+    /** about us **/
+    .aboutus .articles > p {
+        width: 35rem;
+    }
+    /** facts */
+    .rectFact {
+        width: 74rem;
+    }
+    .rectFact .text {
+        padding: 4.7rem 4rem;
+    }
+    .text a {
+        top: 3rem;
+    }
+    /* quote */
+    .quote .saying {
+        padding: 4rem 4rem;
+    }
+    /*contacts */
+    .contactus .ask {
+        margin-right: 2rem;
+        width: 27rem;
+    }
+    /**footer*/
+    footer > div {
+        margin: 0 3.3rem;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .whyus h3, .aboutus h3, .feedback > h3, .ask h3, .text h3 {
+        font-size: 2.2rem;
+    }
+    .text h3 {
+        line-height: 2.5rem;
+    }
+    .saying p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .adv h2, .cards > div h5 {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+    .hero p, .adv p {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    .buttons a, .whyus h4, .aboutus h4, .text h4, .cards > div p,
+    .articles p, .text p, .text a, .mainScreen p, .author h3, .ask p,
+    input, textarea, .small input, form .submit, footer > div > h3{
+        font-size: 1rem;
+    }
+    .author h4, footer > div > h4, footer > div > a,footer > div > h5,
+    footer > div > p, form.small input, form.small textarea,
+    form.small .submit, .copy p {
+        font-size: 0.9rem;
+    }
+    .buttons a , form .submit, form.small .submit{
+        padding: 0.5rem 0.7rem;
+    }
+    .logo-big {
+        height: 40rem;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .hero {
+        padding-left: 6rem;
+    }
+    .logo-big {
+        height: 35rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .logo-big {
+        height: 30rem;
+    }
+    /*hero */
+    .hero {
+        padding-left: 2rem;
+    }
+    .logo {
+        left: 2rem;
+    }
+    #menu {
+        right: 1.3rem;
+    }
+    /*advantages*/
+    .adv h2 {
+        padding-left: 5rem;
+        font-size: 1.4rem;
+    }
+    .adv img {
+        position: absolute;
+    }
+    /*cards and news */
+    .cards > div {
+        width: 20rem;
+        margin: 0 0.5rem;
+    }
+    /** about us **/
+    .aboutus .articles > p {
+        width: 30rem;
+    }
+    /** facts */
+    .rectFact {
+        width: 63rem;
+    }
+    .rectFact .text {
+        padding: 4.7rem 4rem;
+    }
+    .text a {
+        top: 5rem;
+    }
+    /* quote */
+    .quote .saying {
+        padding: 4rem 4rem;
+    }
+    .quote > div {
+        height: 29rem;
+    }
+    /*contacts */
+    .contactus .ask {
+        margin-right: 2rem;
+        width: 20rem;
+    }
+    .ask h3 {
+        line-height: 2.5rem;
+    }
+    /*** form */
+    form{
+        width: 38rem;
+    }
+    /**footer*/
+    footer > div {
+        margin: 0 2rem;
+    }
+    form.small {
+        width: 13rem;
+    }
+    form.small .submit {
+        padding: 0rem;
+        width: 8rem;
+    }
+    form.small input, form.small textarea {
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.7rem;
+    }
+    footer > div > p > img {
+        height: 1rem
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #menu a {
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+    .logo-big {
+        height: 27rem;
+    }
+    /* adv */
+    .adv img {
+        height: 2rem;
+    }
+    .adv > div {
+        padding: 2rem 2.1rem 2rem 2rem;
+    }
+    .adv h2 {
+        padding-left: 3rem;
+    }
+    .adv h2 {
+        font-size: 1.2rem;
+    }
+    /*cards news */
+    .cards > div {
+        width: 18rem;
+    }
+    .cards > div p {
+        padding: 0 1rem 1.8rem 1.4rem;
+    }
+    .cards > div h5 {
+        padding: 1.8rem 0 1rem 1.4rem;
+    }
+    /* bout */
+    .aboutus img {
+        width: 60%;
+    }
+    .aboutus .articles > p{
+        width: 24rem;
+        margin: 1.5rem 0.5rem;
+    }
+    /*facrts*/ 
+    .rectFact {
+        width: 55rem;
+    }
+    .rectFact .text {
+        padding: 3rem 2rem;
+    }
+    .rectFact {
+        height: 35rem;
+    }
+    .text a {
+        top: 3.5rem;
+    }
+    /*quote */
+    .quote {
+        margin: 3rem 0 0 0;
+    }
+    .quote .saying {
+        padding: 3rem 2rem;
+    }
+    .quote > div {
+        height: 28rem;
+    }
+    form {
+        width: 34rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .logo-big {
+        height: 27rem;
+        right: 0;
+    } 
+    .hero p{
+        width: 35rem;
+    }
+    /*adv*/
+    .adv h2 {
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+    .adv p {
+        font-size: 0.9rem;
+        line-height: 1.1rem
+    }
+    /*whyus */
+    .whyus .cards {
+        flex-wrap: wrap;
+    }
+    .whyus {
+        padding: 3rem 0 1rem 0;
+    }
+    .cards > div:last-of-type {
+        margin-top: 2rem;
+    }
+    /*aout*/
+    .aboutus .articles > p {
+        width: 20rem;
+    }
+    .aboutus{
+        padding: 0 0 6rem 0;
+    }
+    /*quote*/
+    .quote {
+        margin: 0 0 0 0;
+    }
+    /*facts*/
+    .rectFact {
+        width: 43rem;
+    }
+    .text h3 {
+        margin: 0.5rem 0;
+    }
+    .rectFact .text {
+        padding: 2rem 1.5rem;
+    }
+    .text a {
+        top: 3rem;
+    }
+    .text.reverse p, .text.reverse h4, .text p {
+        line-height: 1.3rem;
+    }
+    .rectFact {
+        height: 32rem;
+    }
+    /*testies*/
+    .feedback {
+        padding: 3rem 0 5rem 0;
+    }
+    .controls {
+        bottom: 3rem;
+    }
+    .slide-wrapper {
+        width: 42rem;
+    }
+    /*contacts*/
+    input, textarea {
+        margin-bottom: 1rem;
+    }
+    .contactus {
+        padding: 3rem 0;
+        flex-direction: column;
+    }
+    .ask p {
+        margin-bottom: 4rem;
+    }
+    /*foter*/
+    footer {
+        padding: 3rem 0 1rem 0;
+    }
+    footer > div {
+        margin: 0 1rem;
+    }
+    footer > div > img {
+        height: 2.5rem;
+        width: auto;
+    }
+    .copy {
+        padding: 1rem 0;
+    }
+}
+
+@media screen and (max-width: 776px) { 
+    .logo-big {
+        height: 22rem;
+        right: 0;
+    } 
+    /*hero */
+    .hero p {
+        width: 25rem;
+    }
+    /*adv*/
+    .adv {
+        flex-direction: column;
+    }
+    .adv > div {
+        width: 100%;
+        position: relative;
+    }
+    .adv img {
+        position: absolute;
+        top: 1.5rem;
+    }
+    /*cacrd and news */
+    .cards > div:last-of-type {
+        margin-top: 0;
+    }
+    .cards > div {
+        margin-bottom: 2rem;
+    }
+    /*about*/
+    .aboutus .articles {
+        flex-direction: column;
+    }
+    .aboutus .articles > p {
+        width: 30rem;
+    }
+    /*fact*/
+    .rectFact {
+        flex-direction: column;
+        height: auto;
+        width: 30rem;
+    }
+    .rectFact:last-of-type {
+        flex-direction: column-reverse;
+    }
+    .rectFact > div {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .video, .conf {
+        height: 20rem;
+    }
+    .text {
+        height: 26rem;
+    }
+    /*quote*/
+    .saying p {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+    /*testies*/
+    .slide-wrapper {
+        width: 30rem;
+    }
+    /*contact*/
+    form {
+        width: 30rem;
+    }
+    /*footer*/
+    footer {
+        flex-wrap: wrap;
+        padding: 1rem 0 0 0;
+    }
+    footer > div {
+        margin: 1rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #menu {
+        padding-top: 0rem;
+        flex-direction: column;
+        align-items: flex-end;
+    }  
+    #menu a {
+        padding-top: 0.5rem;
+        border-color: #fff;
+    }
+    .logo-big {
+        height: 20rem;
+        right: 0;
+    } 
+    /*hero*/
+    .hero p {
+        width: 22rem;
+    }
+    .buttons a, form .submit, form.small .submit {
+        padding: 0.5rem 0;
+    }
+    .hero h1 {
+        line-height: 2.5rem;
+    }
+    /* about */
+    .aboutus .articles > p {
+        width: 22rem;
+    }
+    .rectFact {
+        width: 23rem;
+    }
+    .text {
+        height: 32rem;
+    }
+    .mainScreen {
+        height: 20rem;
+    }
+    /*quote*/
+    .quote {
+        flex-direction: column;
+    }
+    .quote > div {
+        width: 100%;
+    }
+    .quote > div {
+        height: 21.5rem;
+    }
+    .saying img {
+        margin-bottom: 1.5rem;
+    }
+    .saying h3 {
+        margin-top: 1.5rem;
+    }
+    /*slide*/
+    .slide-wrapper {
+        width: 22rem;
+        margin-bottom: 2rem;
+    }
+    form {
+        width: 22rem;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .logo-big {
+        height: 15rem;
+        right: 0;
+    } 
+    .logo {
+        left: 1rem;
+        top: 1rem;
+    }
+    #menu {
+        top: 0.3rem;
+        right: 0.3rem;
+    }
+    .hero {
+        padding-left: 1rem;
+    }
+    .buttons a {
+        padding: 0.3rem 0.15rem;
+        font-size: 1rem;
+        width: 7rem;
+    }
+    .buttons a:last-of-type {
+        width: 9rem;
+        margin-right: 0;
+    }
+    .hero p {
+        width: 18rem;
+        font-size: 0.9rem;
+        line-height: 1.1rem;
+    }
+    .hero h1 {
+        font-size: 1.9rem;
+        margin-bottom: 0.5rem;
+    }
+    .aboutus .articles > p, .rectFact {
+        width: 18rem;
+    }
+    .whyus h3, .aboutus h3, .feedback > h3, .ask h3, .text h3 {
+        font-size: 2rem;
+    }
+    .slide-wrapper {
+        width: 18rem;
+        margin-top: 2rem;
+    }
+    .text {
+        height: 34rem;
+    }
+    .quote > div {
+        height: 24.5rem;
+    }
+    .contactus .ask {
+        margin-right: 0;
+    }
+    form, .ask{
+        width: 19rem;
+        box-sizing: border-box;
+        padding-left: 1rem;
+    }
+    .ask p {
+        margin-bottom: 2rem;
+    }
+    input {
+        width: 100%;
+    }
+}

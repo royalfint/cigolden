@@ -1,0 +1,21 @@
+<% include ./header %>
+
+              <div class="flex-grid">
+                  <div>
+                    <form action="/admin/users/" class="search" method="post">
+                        <a href="/admin/users/0">Назад</a>
+                        <input type="text" name="search">
+                        <button>Поиск</button>
+                    </form>
+                    <div class="user-list">
+                      <% users.forEach(function(user) { %>
+                          <a href="/admin/user/<%= user._id %>"><%= user.username %></a>
+                      <% }); %>
+                    </div>
+                  </div>
+              </div>
+
+            </main>
+          </div>
+    </body>
+</html>

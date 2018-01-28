@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Войдите в систему</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/admin.css">
+    </head>
+    <body>
+        <div class="loginroom">
+            <form action="/signup" method="POST" class="loginbox">
+                <p>Заполните ваши</p>
+                <input type="text" name="username" placeholder="Логин">
+                <input type="text" name="email" placeholder="E-mail">
+                <input type="password" name="password" placeholder="Пароль">
+                <% if (error && error.length > 0) { %>
+                    <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= error %></p>
+                <% } %>
+                <input type="submit" class="submit" value="Продолжить">
+            </form>
+        </div>
+    </body>
+</html>
