@@ -2,13 +2,11 @@ var express = require("express"),
     app = express.Router(),
     passport = require("passport"),
     User = require("../models/user"),
-    sendmail = require('sendmail')(),
     help = require("./helpful"),
-    ObjectID = require('mongodb').ObjectID;
+    ObjectID = require('mongodb').ObjectID,
+    sgMail = require('@sendgrid/mail');
     
-var api_key = 'key-892c8562a3fcfa1513af11c420b8ca45';
-var domain = 'sandboxd009fa02125b40d2b936414c38e7dd09.mailgun.org';
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+var api_key = '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';
 
 app.get("/", function(req, res) {
    res.render("landing");
@@ -21,18 +19,34 @@ app.get("/login", function(req, res) {
 app.get("/signedup", function(req, res) {
     var passedVariable = req.query.email;
     
-    var data = {
-      from: 'Excited User <me@samples.mailgun.org>',
+    sgMail.setApiKey(api_key);
+    const msg = {
       to: passedVariable,
-      subject: 'Hello',
-      text: 'Testing some Mailgun awesomeness!'
+      from: 'no-reply@cigolden.com',
+      subject: 'Подтверждение аккаунта',
+      html: 'Пройдите по ссылке для подтверждения вашего почтового адреса: <a href="https://cigolden-royalfint.c9users.io/confirming/' + help.encrypt(passedVariable) + '">Нажмите здесь.</a>',
     };
-     
-    mailgun.messages().send(data, function (error, body) {
-      console.log(body);
-    });
+    sgMail.send(msg);
     
     res.render("signedup");
+});
+
+app.get("/confirming/:id", function(req, res) {
+    var useremail = help.decrypt(req.params.id);
+    User.find({email: useremail}, function(err, foundUser){
+        if(foundUser.confirmed == 0){
+            User.findByIdAndUpdate(foundUser[0].id, {confirmed: 1}, function(err, confUser){
+               if(err) console.log(err);
+               
+               res.redirect("/fullsignup");
+            });
+        }
+    });
+    
+});
+
+app.get("/fullsignup", help.isLoggedIn, function(req, res) {
+   res.render("fullsignup");
 });
 
 app.post("/login", passport.authenticate("local", {

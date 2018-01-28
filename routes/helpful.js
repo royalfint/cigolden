@@ -12,13 +12,15 @@ help.isLoggedIn = function isLoggedIn(req, res, next) {
            
            if(user.confirmed == 2){
                next();
+           } else if(user.confirmed == 1){
+                res.redirect("/fullsignup");
            } else {
-                req.flash("err", "Сначала нужно подтвердить вашу почту!");
-                res.redirect("/signedup");
+                req.flash("error", "Сначала нужно подтвердить вашу почту!");
+                res.redirect("/signedup?email=" + user.email);
            }
         });
     } else {
-        req.flash("err", "Сначала нужно войти!");
+        req.flash("error", "Сначала нужно войти!");
         res.redirect("/login");
     }
 }
