@@ -20,8 +20,8 @@
             <p>Наша компания занимается инвестициями и доверительным управлением. Мы выбираем активы, которые тщательно диверсифициваны
                 и позволят вам начать стабильно зарабатывать уже сейчас.</p>
             <div class="buttons">
-                <a href="#">Подробнее</a>
-                <a href="#" class="yellow">Присоединится</a>
+                <a href="#adv">Подробнее</a>
+                <a href="/signup" class="yellow">Присоединится</a>
             </div>
         </div>
         <img src="./img/logo-big.svg" class="logo-big" alt="">
@@ -32,7 +32,7 @@
         <a href="#">Регистрация</a>
     </div-->
 
-    <div class="adv">
+    <div class="adv" id="adv">
         <div class="sign">
             <img src="./img/sign.svg" alt="">
             <div>
@@ -112,7 +112,7 @@
                 <p>Мы ценим профессионализм, доверительность друг-другу, долгосрочные отношения. Мы уверены что вы - наши новые
                     партнеры это те люди, которых не останавливает все новое, чтобы получить захватывающее удовольствие от
                     новых достижений и побед. Вы доверяете нам а мы готовы открыть перед вами новые двери в будущее!</p>
-                <a href="#">Подробнее</a>
+                <a href="#" style="display:none;">Подробнее</a>
             </div>
         </div>
         <div class="rectFact box-shadow">
@@ -122,7 +122,7 @@
                 <p>Успех любого бизнеса заключается в продуманном и разработанном проекте от начала идеи и до конца его внедрения
                     на рынок. Также немаловажную роль играют люди, которые разрабатывали проект, и те люди которые присоединятся
                     к данному проекту на самом истоке глобального развития.</p>
-                <a href="#">Подробнее</a>
+                <a href="#" style="display:none;">Подробнее</a>
             </div>
             <div class="conf">
 
@@ -271,5 +271,42 @@
     <div class="copy">
         <p>Все права защищены. Constant Investment. 2018.</p>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+      <script>
+        $( document ).ready(function() {
+            $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+              // On-page links
+              if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+                && 
+                location.hostname == this.hostname
+              ) {
+                // Figure out element to scroll to
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                // Does a scroll target exist?
+                if (target.length) {
+                  // Only prevent default if animation is actually gonna happen
+                  event.preventDefault();
+                  $('html, body').animate({
+                    scrollTop: target.offset().top
+                  }, 1000, function() {
+                    // Callback after animation
+                    // Must change focus!
+                    var $target = $(target);
+                    $target.focus();
+                    if ($target.is(":focus")) { // Checking if the target was focused
+                      return false;
+                    } else {
+                      $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                      $target.focus(); // Set focus again
+                    };
+                  });
+                }
+              }
+            });
+        });
+      </script>
 
 <% include ./partials/footer %>
