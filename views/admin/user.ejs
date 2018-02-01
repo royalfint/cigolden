@@ -14,6 +14,11 @@
                       <div class="success"><%= success %></div>
                     <% } %>
                     <p>Логин: <%= user.username %></p>
+                    <p>Email: <%= user.email %></p>
+                    <p>Имя: <%= user.firstname %></p>
+                    <p>Фамилия: <%= user.lastname %></p>
+                    <p>ИИН: <%= user.docs %></p>
+                    <p>Телефон: +<%= user.phone %></p>
                     <p>Статус: <%= user.status %></p>
                     <p>Баланс: <%= user.balance.toFixed(2) %></p>
                     <p>Чистая прибыль: <%= user.net_profit.toFixed(2) %></p>

@@ -3,8 +3,16 @@ var mongoose = require("mongoose"),
 
 var RequestSchema = new mongoose.Schema({
     username: String,
-    confirmed: Number,
+    amount: Number,
+    method: String,
     email: String,
+    firstname: String,
+    lastname: String,
+    docs: String,
+    phone: String,
+    date: Date,
+    paid: Boolean,
+    card: String
 });
 
 RequestSchema.plugin(passportLocalMongoose);

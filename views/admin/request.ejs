@@ -1,0 +1,47 @@
+<% include ./header %>
+              <div class="flex-grid">
+                  <div class="pan">
+                    <form class="search">
+                        <a href="/admin/requests/">Назад</a>
+                    </form>
+                    <hr>
+                    <% if(error && error.length > 0) { %>
+                      <div class="error"><%= error %></div>
+                    <% } %>
+                    <% if(success && success.length > 0) { %>
+                      <div class="success"><%= success %></div>
+                    <% } %>
+                    <p>Логин: <%= request.username %></p>
+                    <p>Email: <%= request.email %></p>
+                    <p>Тел: +<%= request.phone %></p>
+                    <p>Имя: <%= request.firstname %></p>
+                    <p>Фамилия: <%= request.lastname %></p>
+                    <p>ИИН: <%= request.docs %></p>
+                    <p>Дата: <%= request.date %></p>
+                    <p>Сумма: <%= request.amount %></p>
+                    <% if(request.method == "card") { %>
+                      <p>Метод: Перевод на карту</p>
+                      <p>Номер карты: <%= request.card %></p>
+                    <% } else if(request.method == "cash") { %>
+                      <p>Метод: Наличными в офисе</p>
+                    <% } else if(request.method == "bonus") { %>
+                      <p>Метод: Бонус</p>
+                    <% } %>
+                    <% if (request.method == "card" || request.method == "cash") { %>
+                    <form action="/admin/action/withdraw" method="POST" class="addbalance">
+                      <input type="hidden" name="useremail" value="<%= request.email %>">
+                      <input type="hidden" name="amount" value="<%= request.amount %>">
+                      <button>Списать баланс пользователя</button>
+                    </form>
+                    <% } else if (request.method == "bonus") { %>
+                    <form action="/admin/action/bonus" method="POST" class="addbalance">
+                      <input type="hidden" name="useremail" value="<%= request.email %>">
+                      <button>Скрыть заявку</button>
+                    </form>
+                    <% } %>
+                  </div>
+              </div>
+            </main>
+          </div>
+    </body>
+</html>

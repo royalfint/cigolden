@@ -31,22 +31,87 @@ app.get("/signedup", function(req, res) {
     res.render("signedup");
 });
 
-app.get("/confirming/:id", function(req, res) {
-    var useremail = help.decrypt(req.params.id);
-    User.find({email: useremail}, function(err, foundUser){
-        if(foundUser.confirmed == 0){
-            User.findByIdAndUpdate(foundUser[0].id, {confirmed: 1}, function(err, confUser){
-               if(err) console.log(err);
-               
-               res.redirect("/fullsignup");
-            });
+//продолжение регистрации
+app.post("/signupnext", function(req, res){
+    if(req.body.userid && req.body.userid.length > 0){
+        var useremail = help.decrypt(req.body.userid);
+        if(req.body.firstname && req.body.firstname.length > 0){
+            if(req.body.lastname && req.body.lastname.length > 0){
+                if(req.body.docs && req.body.docs.length == 12){
+                    if(req.body.phone && help.checkPhone(req.body.phone)){
+                        User.find({email: useremail}, function(err, newUser){
+                            if(err) console.log(err);
+                            
+                            console.log("newUser: "+newUser)
+                            if(newUser[0]){
+                                User.findByIdAndUpdate(newUser[0].id, {
+                                    firstname: req.body.firstname,
+                                    lastname: req.body.lastname,
+                                    docs: req.body.docs,
+                                    phone: req.body.phone,
+                                    confirmed: 2
+                                }, function(err, altUser){
+                                    if(err) console.log(err);
+                                    
+                                    console.log("altUser: "+altUser);
+                                    res.redirect("/wallet");
+                                });
+                            }else{
+                                req.flash("error", "Нет пользователя с таким email!");
+                                res.redirect("back");
+                            }
+                        });
+                    } else{
+                        req.flash("error", "Введите ваш сотовый верно!");
+                        res.redirect("back");
+                    }
+                } else {
+                    req.flash("error", "Введите ваш ИИН верно!");
+                    res.redirect("back");
+                }
+            } else {
+                req.flash("error", "Введите вашу фамилию!");
+                res.redirect("back");
+            }
+        } else {
+            req.flash("error", "Введите ваше имя!");
+            res.redirect("back");
         }
-    });
-    
+    } else {
+        req.flash("error", "Ошибка ID при регистрации.");
+        res.redirect("back");
+    }
 });
 
-app.get("/fullsignup", help.isLoggedIn, function(req, res) {
-   res.render("fullsignup");
+app.get("/confirming/:id", function(req, res) {
+    var useremail = help.decrypt(req.params.id);
+    console.log(useremail);
+    User.find({email: useremail}, function(err, foundUser){
+        console.log("user with the email: " + foundUser);
+        if(foundUser){
+            if(foundUser[0].confirmed == 0){
+                User.findByIdAndUpdate(foundUser[0].id, {confirmed: 1}, function(err, confUser){
+                   if(err) console.log(err);
+                   
+                   res.redirect("/fullsignup?userid=" + req.params.id);
+                });
+            }else if(foundUser[0].confirmed == 1){
+                res.redirect("/fullsignup?userid=" + req.params.id);
+            }
+        } else {
+            console.log("no user with such email");
+        }
+    });
+});
+
+app.get("/fullsignup", function(req, res) {
+    if(req.query.userid){
+        res.render("fullsignup", {userid: req.query.userid});
+    }
+    else{
+        req.flash("error", "Неправильный ID при регистрации.")
+        res.redirect("back");
+    }
 });
 
 app.post("/login", passport.authenticate("local", {
@@ -54,7 +119,6 @@ app.post("/login", passport.authenticate("local", {
         failureRedirect: "/login",
         failureMessage: "Неверный логин или пароль"
     }), function(req, res){
-    console.log(req.session.messages);
 });
 
 app.get("/signup", function(req, res) {
@@ -62,84 +126,102 @@ app.get("/signup", function(req, res) {
 });
 
 app.post("/signup", function(req, res) {
-    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-       if(err) {
-           req.flash("error", err.message); //TODO add email erorr! and double pass field
-           res.redirect("/signup");
-       }
-        passport.authenticate("local")(req, res, function(){
-           User.find({ _id: req.user.id }, function(err, _users) {
-                if(err) {
-                    console.log(err);
-                    res.redirect("back");
-                } else {
-                    if(req.session.referal){
-                        console.log("Кто нас пригласил: "+req.session.referal);
-                        User.findById(new ObjectID(req.session.referal), function(err, refUser){// TODO check if referrer exists
-                           if(err) console.log(err);
-                               var newRefs1 = refUser.refs1;
-                               newRefs1.push({
-                                    username: req.user.username,
-                                    active: false,
-                                    balance: 0,
-                                    percent: refUser.refs1_percent,
-                                    reward_date: 0,
-                                    deposit_date: 0
-                               });
-                               User.findByIdAndUpdate(new ObjectID(req.session.referal), {refs1: newRefs1}, function(err, newUser) {
-                                  if(err) console.log(err); // Добавились в список реферов 1 уровны
-                                  
-                                    if(newUser.referal){ //Если у пригласителя есть пригласитель
-                                        console.log("Кто пригласил пригласитля: "+newUser.referal);
-                                        User.findById(newUser.referal, function(err, secondUser){
+    if(req.body.email){
+        if(!help.validateEmail(req.body.email)){
+            req.flash("error", "Введите правильный email!");
+            return res.redirect("back");
+        } else {
+             User.find({email: req.body.email}, function(err, anotherUser){
+                console.log(anotherUser);
+               if(anotherUser && anotherUser.length > 0){
+                   req.flash("error", "Данный email уже используется!");
+                   return res.redirect("back");
+               } else {
+                    User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+                       if(err) {
+                           req.flash("error", err.message); //TODO add email erorr! and double pass field
+                           res.redirect("/signup");
+                       }
+                        passport.authenticate("local")(req, res, function(){
+                           User.find({ _id: req.user.id }, function(err, _users) {
+                                if(err) {
+                                    console.log(err);
+                                    res.redirect("back");
+                                } else {
+                                    if(req.session.referal){
+                                        console.log("Кто нас пригласил: "+req.session.referal);
+                                        User.findById(new ObjectID(req.session.referal), function(err, refUser){// TODO check if referrer exists
                                            if(err) console.log(err);
-                                               var newRefs2 = secondUser.refs2;
-                                               newRefs2.push({
+                                               var newRefs1 = refUser.refs1;
+                                               newRefs1.push({
                                                     username: req.user.username,
                                                     active: false,
                                                     balance: 0,
-                                                    percent: secondUser.refs2_percent,
+                                                    percent: refUser.refs1_percent,
                                                     reward_date: 0,
                                                     deposit_date: 0
                                                });
-                                               User.findByIdAndUpdate(newUser.referal, {refs2: newRefs2}, function(err, newSecUser) {
+                                               User.findByIdAndUpdate(new ObjectID(req.session.referal), {refs1: newRefs1}, function(err, newUser) {
                                                   if(err) console.log(err); // Добавились в список реферов 1 уровны
+                                                  
+                                                    if(newUser.referal && newUser.referal.length > 0){ //Если у пригласителя есть пригласитель
+                                                        console.log("Кто пригласил пригласитля: "+newUser.referal);
+                                                        User.findById(newUser.referal, function(err, secondUser){
+                                                           if(err) console.log(err);
+                                                               var newRefs2 = secondUser.refs2;
+                                                               newRefs2.push({
+                                                                    username: req.user.username,
+                                                                    active: false,
+                                                                    balance: 0,
+                                                                    percent: secondUser.refs2_percent,
+                                                                    reward_date: 0,
+                                                                    deposit_date: 0
+                                                               });
+                                                               User.findByIdAndUpdate(newUser.referal, {refs2: newRefs2}, function(err, newSecUser) {
+                                                                  if(err) console.log(err); // Добавились в список реферов 1 уровны
+                                                               });
+                                                        });
+                                                    } else {
+                                                        console.log("У пригласителя нету пригласителя!");
+                                                    }
                                                });
                                         });
-                                    } else {
-                                        console.log("У пригласителя нету пригласителя!");
                                     }
-                               });
-                        });
-                    }
-                    
-                    var ourreferal = "";
-                    if(req.session.referal)
-                        ourreferal = req.session.referal;
-                    User.findByIdAndUpdate(req.user.id, {
-                        email: req.body.email,
-                        confirmed: 0,
-                        balance: 0,
-                        status: 0,
-                        net_profit: 0,
-                        deposit_percent: 0,
-                        refs1_percent: 0,
-                        referal: ourreferal,
-                        refs2_percent: 0,
-                        signup_date: Date(new Date())
-                    }, function(err, newUser){
-                        if(err) {
-                            console.log(err);
-                            res.redirect("back");
-                        } else {
-                            //updated our email!!!
-                            res.redirect("/signedup?email="+req.body.email);
-                        }
+                                    
+                                    var ourreferal = "";
+                                    if(req.session.referal)
+                                        ourreferal = req.session.referal;
+                                    User.findByIdAndUpdate(req.user.id, {
+                                        email: req.body.email,
+                                        confirmed: 0,
+                                        balance: 0,
+                                        status: 0,
+                                        net_profit: 0,
+                                        deposit_percent: 0,
+                                        refs1_percent: 0,
+                                        referal: ourreferal,
+                                        refs2_percent: 0,
+                                        signup_date: Date(new Date())
+                                    }, function(err, newUser){
+                                        if(err) {
+                                            console.log(err);
+                                            res.redirect("back");
+                                        } else {
+                                            //updated our email!!!
+                                            res.redirect("/signedup?email="+req.body.email);
+                                        }
+                                    });
+                                }
+                            });
+                       });
                     });
-                }
-            });
-       });
-    });
+               }
+            });   
+        }
+    }else{
+        req.flash("error", "Введите ваш email!");
+        return res.redirect("back");
+    }
 });
 
 app.get("/logout", function(req, res){
@@ -154,14 +236,27 @@ app.get("/r/:id", function(req, res){
 });
 
 // TEST
+/*
 app.get("/test", function(req, res){
     User.find({username: "royalfint"}, function(err, gotUsers){
         if(err) console.log(err);
         
         User.findByIdAndUpdate(gotUsers[0]._id, {
-            /*next_payment: new Date()*/
             confirmed: 2,
-            /*status: 9*/
+            status: 9
+        }, function(err, newUser){
+            if(err) console.log(err);
+            res.send("done!");
+        });
+    });
+});*/
+
+app.get("/test", function(req, res){
+    User.find({username: "admin"}, function(err, gotUsers){
+        if(err) console.log(err);
+        
+        User.findByIdAndUpdate(gotUsers[0]._id, {
+            widthdrawal_date: new Date()
         }, function(err, newUser){
             if(err) console.log(err);
             res.send("done!");

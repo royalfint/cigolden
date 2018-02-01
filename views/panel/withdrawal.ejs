@@ -3,17 +3,56 @@
               <div class="flex-grid">
                   <div>
                     <h2>Заявка на вывод денег</h2>
+                    <div class="pan">
+                    <% if (error && error.length > 0) { %>
+                        <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= error %></p>
+                    <% } %>
+                    </div>
+                    <div class="pan">
+                    <% if (success && success.length > 0) { %>
+                        <p class="success"><img src="./img/checked.svg" class="icon" alt=""> <%= success %></p>
+                    <% } %>
+                    </div>
                     <div class="field">
                       <p>Доступная сумма для вывода</p>
                       <input type="text" value="<%= available_funds.toFixed(2) %>" disabled>
                     </div>
-                    
-                    
                   </div>
               </div>
-
               
-          
+              <div class="flex-grid">
+                <div>
+                  <h2>Запросить сумму наличными</h2>
+                  <div class="field">
+                    <p>Сумма для вывода</p>
+                    <form action="/withdrawal" method="POST" class="newform">
+                      <input type="hidden" name="method" value="cash">
+                      <input type="number" name="withdraw" min="0" placeholder="Введите сумму">
+                      <button>Запрос</button>
+                    </form>
+                  </div>
+                  <p><br>Чтобы получить запрошенную вами сумму, после того как отправили заявку, нужно пройти в наш офис по адресу: г.Алматы, Самал 3</p>
+                </div>
+                <div>
+                  <h2>Запросить сумму на карту</h2>
+                    <form action="/withdrawal" method="POST" class="cardform">
+                      <input type="hidden" name="method" value="card">
+                      <div class="field">
+                        <p>Номер вашей карты</p>
+                        <input type="number" maxlength="16" min="0" class="newforminput" name="card" placeholder="Номер карты">
+                      </div>
+                      <div class="field">
+                        <p>Сумма для вывода</p>
+                        <div class="newform">
+                          <input type="number" name="withdraw" min="0" placeholder="Введите сумму">
+                          <button>Запрос</button>
+                        </div>
+                      </div>
+                    </form>
+                    <p><br>Наши специалисты обработают вашу заявку и отправят сумму на указанные вами реквизиты в течении двух рабочих дней.</p>
+                    <p><br></p>
+                </div>
+              </div>
       </main>
   </div>
 <% include ./footer %>

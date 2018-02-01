@@ -1,47 +1,46 @@
 <% include ./header %>
 
-              <!--div class="flex-grid">
-                <div>
-                  <h2>Clean CSS Code</h2>
-                  <ul>
-                    <li>no position: absolute</li>
-                    <li>no float</li>
-                    <li>no clearfix</li>
-                    <li>no faux columns</li>
-                    <li>no javascript</li>
-                  </ul>
-                </div>
-                <div>
-                  <h2>Font Awesome</h2>
-                  <ul>
-                    <li>no images</li>
-                    <li>no extra retina sprites</li>
-                  </ul>
-                </div>
-                <div>
-                  <h2>SCSS</h2>
-                  <ul>
-                    <li>no headache :)</li>
-                  </ul>
-                </div>
-              </div-->
-              <!--div class="flex-grid">
-                <div>
-                  <h2>Headline</h2>
-                  Some Content
-                </div>
-                <div>
-                  <h2>Headline</h2>
-                  Some Content
-                </div>
-              </div-->
-          
-              <!--div class="flex-grid">
-                <div>
-                  <h2>Headline</h2>
-                  Some Content
-                </div>
-              </div-->
+<style>
+@keyframes load-right-pie-1
+{
+    from {transform: rotate(0deg);}
+    <% if (Number(daystillpayment) <= 15) { %>
+      to {transform: rotate(<%= Number(daystillpayment) * 12 %>deg);}
+    <% } else { %>
+      to {transform: rotate(180deg);}
+    <% } %>
+}
+
+@-webkit-keyframes load-right-pie-1
+{
+    from {-webkit-transform: rotate(0deg);}
+    <% if (Number(daystillpayment) <= 15) { %>
+      to {transform: rotate(<%= Number(daystillpayment) * 12 %>deg);}
+    <% } else { %>
+      to {transform: rotate(180deg);}
+    <% } %>
+}
+
+@keyframes load-left
+{
+    from {transform: rotate(-180deg);}
+    <% if (Number(daystillpayment) <= 15) { %>
+      to {transform: rotate(-<%= (31 - Number(daystillpayment)) * 12 %>deg);}
+    <% } else { %>
+      to {transform: rotate(0deg);}
+    <% } %>
+}
+
+@-webkit-keyframes load-left
+{
+    from {transform: rotate(-180deg);}
+    <% if (Number(daystillpayment) <= 15) { %>
+      to {transform: rotate(-<%= (31 - Number(daystillpayment)) * 12 %>deg);}
+    <% } else { %>
+      to {transform: rotate(0deg);}
+    <% } %>
+}
+</style>
 
               <div class="flex-grid">
                   <div>
@@ -63,9 +62,8 @@
                         <div class="outer-right mask">
                             <div class="inner-right"></div>
                         </div>
-                    
                         <div class="outer-left mask">
-                            <div class="inner-left"></div>
+                            <div  class="inner-left"></div>
                         </div>
                         <div class="content">
                             <span><%= daystillpayment %></span>

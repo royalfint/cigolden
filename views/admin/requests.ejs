@@ -1,0 +1,36 @@
+<% include ./header %>
+              
+              <div class="flex-grid">
+                <div>
+                  <h2>Заявки на наличный вывод</h2>
+                    <div class="user-list">
+                    <% requests.forEach(function(request) { %>
+                        <% if(request.method == "cash" && request.paid == false) { %>
+                        <a href="/admin/request/<%= request.id %>"><%= request.username %> - <%= request.amount %>тг</a>
+                        <% } %>
+                    <% }); %>
+                    </div>
+                </div>
+                <div>
+                  <h2>Заявки на вывод на карту</h2>
+                    <div class="user-list">
+                    <% requests.forEach(function(request) { %>
+                        <% if(request.method == "card" && request.paid == false) { %>
+                        <a href="/admin/request/<%= request.id %>"><%= request.username %> - <%= request.amount %>тг</a>
+                        <% } %>
+                    <% }); %>
+                    </div>
+                </div>
+                <div>
+                    <h2>Ожидают бонус</h2>
+                    <div class="user-list">
+                    <% requests.forEach(function(request) { %>
+                        <% if(request.method == "bonus" && request.paid == false) { %>
+                        <a href="/admin/request/<%= request.id %>"><%= request.username %> - <%= request.amount %>тг</a>
+                        <% } %>
+                    <% }); %>
+                    </div>
+                </div>
+              </div>
+
+            <% include ./footer %>

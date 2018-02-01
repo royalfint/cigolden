@@ -6,11 +6,13 @@
     </head>
     <body>
         <div class="loginroom">
-            <form action="/signup" method="POST" class="loginbox">
-                <p>Заполните ваши</p>
-                <input type="text" name="username" placeholder="Логин">
-                <input type="text" name="email" placeholder="E-mail">
-                <input type="password" name="password" placeholder="Пароль">
+            <form action="/signupnext" method="POST" class="loginbox">
+                <p>Заполните ваши данные</p>
+                <input type="text" name="firstname" placeholder="Имя">
+                <input type="hidden" name="userid" value="<%= userid %>">
+                <input type="text" name="lastname" placeholder="Фамилия">
+                <input type="text" name="docs" placeholder="ИИН">
+                <input type="text" name="phone" placeholder="Сотовый без +">
                 <% if (error && error.length > 0) { %>
                     <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= error %></p>
                 <% } %>

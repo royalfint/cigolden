@@ -5,7 +5,7 @@ var crypto = require('crypto'),
     
 var help = {};
     
-help.isLoggedIn = function isLoggedIn(req, res, next) {
+help.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()){
         User.findById(req.user.id, function(err, user){
            if(err) console.log(err); 
@@ -13,7 +13,7 @@ help.isLoggedIn = function isLoggedIn(req, res, next) {
            if(user.confirmed == 2){
                next();
            } else if(user.confirmed == 1){
-                res.redirect("/fullsignup");
+                res.redirect("/fullsignup?userid=" + help.encrypt(user.email));
            } else {
                 req.flash("error", "Сначала нужно подтвердить вашу почту!");
                 res.redirect("/signedup?email=" + user.email);
@@ -23,6 +23,11 @@ help.isLoggedIn = function isLoggedIn(req, res, next) {
         req.flash("error", "Сначала нужно войти!");
         res.redirect("/login");
     }
+}
+
+help.validateEmail = function (email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 }
 
 help.isAdmin = function (req, res, next){
@@ -43,32 +48,44 @@ help.isAdmin = function (req, res, next){
     }
 }
 
-help.encrypt = function encrypt(text){
+help.encrypt = function(text){
   var cipher = crypto.createCipher(algorithm,password)
   var crypted = cipher.update(text,'utf8','hex')
   crypted += cipher.final('hex');
   return crypted;
 }
  
-help.decrypt = function decrypt(text){
+help.decrypt = function(text){
   var decipher = crypto.createDecipher(algorithm,password)
   var dec = decipher.update(text,'hex','utf8')
   dec += decipher.final('utf8');
   return dec;
 }
 
-help.daysToDate = function daysToDate(input_date, daystoadd) {
+help.daysToDate = function(input_date, daystoadd) {
     var date = new Date(input_date);
     var newdate = new Date(date);
     newdate.setDate(newdate.getDate() + daystoadd);
     return newdate;
 }
 
-help.tillDate = function tillDate(welldate){ 
+help.tillDate = function(welldate){ 
     var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
     var secondDate = new Date(welldate);
     var firstDate = new Date();
-    return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+    //return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+    return Math.round((firstDate.getTime() - secondDate.getTime())/(oneDay) * -1);
+}
+
+help.checkPhone = function(inputtxt){
+    var phoneno = /^\d{11}$/;
+    if(inputtxt.match(phoneno)){
+      return true;
+    }
+      else
+    {
+        return false;
+    }
 }
 
 module.exports = help;

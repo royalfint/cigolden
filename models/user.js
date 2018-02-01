@@ -11,6 +11,7 @@ var UserSchema = new mongoose.Schema({
     firstname: String,
     lastname: String,
     docs: String,
+    phone: Number,
     net_profit: Number,
     deposit_percent: Number,
     deposit_date: Date,

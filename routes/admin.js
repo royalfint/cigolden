@@ -1,6 +1,7 @@
 var express = require("express"),
     app = express.Router(),
     User = require("../models/user"),
+    Request = require("../models/request"),
     help = require("./helpful"),
     ObjectID = require('mongodb').ObjectID;
 
@@ -139,7 +140,57 @@ app.post("/admin/action/:action", help.isAdmin, function(req, res) {
                 res.redirect("back");
             });
        }
+   } else if(req.params.action == "withdraw") {
+       if(req.body.useremail && req.body.amount){
+           Request.find({email: req.body.useremail}, function(err, gotRequests) {
+              if(gotRequests) {
+                  Request.findByIdAndUpdate(gotRequests[0].id, {paid: true}, function(err, newReq){
+                      console.log("paid req: " + newReq);
+                  });
+              }
+           });
+           
+           User.find({email: req.body.useremail}, function(err, gotUser){
+              if(gotUser){
+                  var newProfitNum = Number(gotUser[0].net_profit) - Number(req.body.amount);
+                  var newBalanceNum = Number(gotUser[0].balance);
+                  if( newBalanceNum < 0) {
+                      newBalanceNum += newProfitNum;
+                  }
+                  User.findByIdAndUpdate(gotUser[0].id, { net_profit: newProfitNum, balance: newBalanceNum}, function(err, newBalancedUser) {
+                      console.log("User with the new balance: " + newBalancedUser);
+                      res.redirect("/admin/requests");
+                  });
+              } 
+           });
+       }
+   } else if (req.params.action == "bonus") {
+       if(req.body.useremail){
+           Request.find({email: req.body.useremail}, function(err, gotRequests) {
+              if(gotRequests) {
+                  Request.findByIdAndUpdate(gotRequests[0].id, {paid: true}, function(err, newReq){
+                      console.log("paid req: " + newReq);
+                      res.redirect("/admin/requests");
+                  });
+              }
+           });
+       }
    }
+});
+
+//Requests page
+app.get("/admin/requests", help.isAdmin, function(req, res) {
+    Request.find({}, function(err, gotRequests){ //passing current page users and total count
+        if(err) console.log(err);
+            
+        res.render("admin/requests", {requests: gotRequests});
+    });
+});
+
+app.get("/admin/request/:id", help.isAdmin, function(req, res) {
+   Request.findById(req.params.id, function(err, reqs){
+      res.render("admin/request", {request: reqs});
+   });
 });
 
 //user with certain id page
