@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Восстановление пароля</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/admin.css">
+    </head>
+    <body>
+        <div class="loginroom">
+            <form action="/resetnewpass" method="POST" class="loginbox">
+                <p>Придумайте новый пароль</p>
+                <input type="hidden" name="email" value="<%= email %>">
+                <input type="password" name="pass1" placeholder="Ваш новый пароль">
+                <input type="password" name="pass2" placeholder="Подтверждение пароля">
+                <% if (error && error.length > 0) { %>
+                    <p class="error"><img src="../img/error.svg" class="icon" alt=""> <%= error %></p>
+                <% } %>
+                <input type="submit" class="submit" value="Продолжить">
+            </form>
+        </div>
+    </body>
+</html>

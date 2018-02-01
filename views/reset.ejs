@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Восстановление пароля</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/admin.css">
+    </head>
+    <body>
+        <div class="loginroom">
+            <form action="/resetpass" method="POST" class="loginbox">
+                <p>Сброс пароля</p>
+                <% if (success && success.length > 0) { %>
+                    <p style="width: 15.7rem;" class="success"><img src="./img/checked.svg" class="icon" alt=""> <%= success %></p>
+                <% } %>
+                <input type="text" name="email" placeholder="E-mail">
+                <% if (error && error.length > 0) { %>
+                    <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= error %></p>
+                <% } %>
+                <input type="submit" class="submit" value="Продолжить">
+            </form>
+        </div>
+    </body>
+</html>

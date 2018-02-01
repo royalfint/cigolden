@@ -1,0 +1,56 @@
+<% include ./header %>
+              
+              <div class="flex-grid">
+                <div class="pan">
+                  <h2>Ваш профиль</h2>
+                  <p>Логин: <%= user.username %></p>
+                  <p>Email: <%= user.email %></p>
+                  <p>Имя: <%= user.firstname %></p>
+                  <p>Фамилия: <%= user.lastname %></p>
+                  <p>ИИН: <%= user.docs %></p>
+                  <p>Телефон: +<%= user.phone %></p>
+                  <p>Дата Регистрации: <%= user.signup_date %></p>
+                </div>
+                <div>
+                  <h2>Сменить пароль</h2>
+                  <div class="pan">
+                    <% if (error && error.length > 0) { %>
+                        <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= error %></p>
+                    <% } %>
+                    </div>
+                    <div class="pan">
+                    <% if (success && success.length > 0) { %>
+                        <p class="success"><img src="./img/checked.svg" class="icon" alt=""> <%= success %></p>
+                    <% } %>
+                  </div>
+                  <form action="/reset" method="POST" class="cardform">
+                      <input type="hidden" name="method" value="card">
+                      <div class="field short">
+                        <p>Текущий</p>
+                        <input type="password" class="newforminput" name="old" placeholder="Ваш текущий пароль">
+                      </div>
+                      <div class="field short">
+                        <p>Новый</p>
+                        <div class="newform">
+                          <input type="password" name="new" placeholder="Ваш новый пароль">
+                        </div>
+                      </div>
+                      <div class="field short resetpass">
+                        <div class="newform">
+                          <button>Сменить пароль</button>
+                        </div>
+                      </div>
+                  </form>
+                </div>
+                <div class="pan">
+                    <h2>Операции</h2>
+                    <p>Баланс: <%= user.balance.toFixed(2) %></p>
+                    <p>Чистая прибыль: <%= user.net_profit.toFixed(2) %></p>
+                    <p>След. Начисление: <%= user.next_payment %></p>
+                    <p>Прибыль можно вывести: <%= user.widthdrawal_date %></p>
+                    <p>Баланс можно вывести: <%= user.exit_date %></p>
+                    <p>Дата Регистрации: <%= user.signup_date %></p>
+                </div>
+              </div>
+
+            <% include ./footer %>

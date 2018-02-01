@@ -13,9 +13,12 @@
                 <% if (login_errors && login_errors!= []) { %>
                     <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= login_errors %></p>
                 <% req.session.messages = []; } %>
+                <% if (success && success.length > 0) { %>
+                    <p style="width: 15.7rem;" class="success"><img src="./img/checked.svg" class="icon" alt=""> <%= success %></p>
+                <% } %>
                 <input type="submit" class="submit" value="Войти">
                 
-                <a class="reset" href="#">Забыли пароль?</a>
+                <a class="reset" href="/reset">Забыли пароль?</a>
             </form>
         </div>
     </body>

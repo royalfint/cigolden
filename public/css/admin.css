@@ -283,15 +283,23 @@ hr {
   margin-bottom: 1rem;
 }
 
+.field.resetpass .newform  {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
 .refered {
   width: 18rem;
   box-sizing: border-box;
   border: 1px solid gray;
-  margin-top: 1rem;
+  margin-top: 0.6rem;
+  text-align: center;
 }
 
 .refered td {
-  padding: 0 0 0.5rem 0.3rem;
+  padding: 0 0 0.5rem 0;
 }
 
 .success {
@@ -415,6 +423,10 @@ hr {
   width: 28rem;
   box-sizing: border-box;
   justify-content: space-between;
+}
+
+.field.short {
+  width: 18rem;
 }
 
 .field input {
@@ -559,8 +571,6 @@ hr {
     clip: rect(0px 70px 140px 0px);
     z-index: 2;
     animation: load-right-pie-1 1s linear;
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
 }
 .inner-left
 {
@@ -578,7 +588,7 @@ hr {
     -webkit-animation-delay: 1s;
     -webkit-animation-fill-mode:forwards;
     -webkit-transform: rotate(180deg);
-    transform: rotate(-180deg);
+    transform: rotate(180deg);
 }
 
 .content

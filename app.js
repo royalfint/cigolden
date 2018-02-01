@@ -5,8 +5,7 @@ var express               = require('express'),
     flash                 = require('connect-flash'),
     bodyParser            = require("body-parser"),
     User                  = require("./models/user"),
-    localStrategy         = require("passport-local"),
-    passportLocalMongoose = require("passport-local-mongoose");
+    localStrategy         = require("passport-local");
     
 var adminRoutes = require("./routes/admin"),
     indexRoutes = require("./routes/index"),
