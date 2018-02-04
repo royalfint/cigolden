@@ -27,6 +27,11 @@ app.get("/bonus", help.isLoggedIn, function(req, res) {
     });
 });
 
+app.get("/marketing", help.isUser, function(req, res) {
+
+   res.render("marketing");
+});
+
 app.get("/reset", function(req, res){
     res.render("reset");
 });

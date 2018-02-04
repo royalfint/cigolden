@@ -111,7 +111,7 @@ app.get("/fullsignup", function(req, res) {
     else{
         req.flash("error", "Неправильный ID при регистрации.")
         res.redirect("back");
-    }
+    } //TODO make confirm 1 when confirm 1 unavailable
 });
 
 app.post("/login", passport.authenticate("local", {
@@ -224,6 +224,35 @@ app.post("/signup", function(req, res) {
     }
 });
 
+app.post("/contact", function(req, res) {
+    if(req.body.email && req.body.email.length > 0){
+        if(req.body.thread && req.body.thread.length > 0) {
+            if(req.body.message && req.body.message.length > 0) {
+                sgMail.setApiKey(api_key);
+                const msg = {
+                  to: "royalfint@gmail.com",
+                  from: req.body.email,
+                  subject: req.body.thread,
+                  html: req.body.message
+                };
+                sgMail.send(msg);
+            } else {
+                req.flash("error", "Введите сообщение!");
+                res.redirect("back");
+            }
+        } else {
+            req.flash("error", "Введите тему!");
+            res.redirect("back");
+        }
+    }
+    else {
+        req.flash("error", "Введите email!");
+        res.redirect("back");
+    }
+    
+    res.redirect("back");
+});
+
 app.get("/logout", function(req, res){
     res.locals.status = 0;
     req.logout();
@@ -236,27 +265,13 @@ app.get("/r/:id", function(req, res){
 });
 
 // TEST
-/*
+
 app.get("/test", function(req, res){
     User.find({username: "royalfint"}, function(err, gotUsers){
         if(err) console.log(err);
         
         User.findByIdAndUpdate(gotUsers[0]._id, {
-            confirmed: 2,
             status: 9
-        }, function(err, newUser){
-            if(err) console.log(err);
-            res.send("done!");
-        });
-    });
-});*/
-
-app.get("/test", function(req, res){
-    User.find({username: "admin"}, function(err, gotUsers){
-        if(err) console.log(err);
-        
-        User.findByIdAndUpdate(gotUsers[0]._id, {
-            widthdrawal_date: new Date()
         }, function(err, newUser){
             if(err) console.log(err);
             res.send("done!");

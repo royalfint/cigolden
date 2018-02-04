@@ -11,6 +11,11 @@ help.isLoggedIn = function(req, res, next) {
            if(err) console.log(err); 
            
            if(user.confirmed == 2){
+               if(user.status == 9){
+                   res.locals.level = 9;
+               } else {
+                   res.locals.level = 0;
+               }
                next();
            } else if(user.confirmed == 1){
                 res.redirect("/fullsignup?userid=" + help.encrypt(user.email));
@@ -48,6 +53,24 @@ help.isAdmin = function (req, res, next){
     }
 }
 
+help.isUser = function(req, res, next){
+    if (req.isAuthenticated()){
+        User.findById(req.user.id, function(err, user){
+           if(err) console.log(err); 
+           
+           if(user.balance > 0){
+               next();
+           } else {
+                req.flash("err", "Недостаточно прав!");
+                res.redirect("/wallet");
+           }
+        });
+    } else {
+        req.flash("err", "Сначала нужно войти!");
+        res.redirect("/login");
+    }
+}
+
 help.encrypt = function(text){
   var cipher = crypto.createCipher(algorithm,password)
   var crypted = cipher.update(text,'utf8','hex')
@@ -61,6 +84,8 @@ help.decrypt = function(text){
   dec += decipher.final('utf8');
   return dec;
 }
+
+
 
 help.daysToDate = function(input_date, daystoadd) {
     var date = new Date(input_date);

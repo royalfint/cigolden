@@ -218,6 +218,7 @@ main .bar button:hover {
 
 .pages {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 0.5rem;
   border-left: 1px solid lightgray;
   width: 19rem;

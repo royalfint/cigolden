@@ -10,7 +10,7 @@ var express               = require('express'),
 var adminRoutes = require("./routes/admin"),
     indexRoutes = require("./routes/index"),
     panelRoutes = require("./routes/panel");
-
+    
 //mongoose.connect("mongodb://localhost/cigolden_db");
 mongoose.connect("mongodb://ciadmin:YtEpyftimVjq1Gfhjkm@ds113648.mlab.com:13648/cigolden");
 
@@ -28,6 +28,7 @@ app.use(flash());
 app.use(function(req, res, next) {
    res.locals.currentUser = req.user;
    res.locals.error = req.flash("error");
+   res.locals.level = 0;
    res.locals.success = req.flash("success");
    next();
 });

@@ -94,6 +94,10 @@ body.scroll {
     padding-left: 15.6rem;
 }
 
+.hero.short {
+    height: 16rem;
+}
+
 .overlay {
     position: fixed;
     display: none;
@@ -727,6 +731,180 @@ form.small .submit:hover {
     color: #fff;
 }
 
+.strats{
+    padding: 6.25rem 0;
+    display: flex;
+}
+
+.strats.peps {
+    padding-bottom: 0;
+}
+
+.heads.reverse {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.heads h1, .passive h1{
+    font-family: ProximaBold;
+    font-size: 3.3rem;
+    color: #1f1f1f;
+    margin: 0;
+    line-height: 3.3rem;
+}
+
+.heads.reverse h1{
+    text-align: right;
+}
+
+.heads h1.white {
+    color: #fff;
+}
+
+.stairs{
+    width: 49rem;
+    height: auto;
+}
+
+.passive {
+    padding: 6.25rem 0;
+}
+
+.heads p, .passive p{
+    color: #84888c;
+    font-size: 1.25rem;
+    max-width: 34rem;
+    line-height: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.heads.reverse p {
+    text-align: right;
+}
+
+.invite {
+    padding: 5rem 0 0 0;
+    background: url(../img/table.jpg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.heads p span{
+    color: #f7d700;
+}
+
+.heads .yell, .passive .yell {
+    background: #f7d700;
+    height: 0.5rem;
+    width: 3.3rem;
+    margin: 2rem 0 2rem 0;
+}
+
+.passive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pie {
+    position: relative;
+    padding-left: 12.5rem;
+    padding-right: 13.5rem;
+}
+
+.pie .circle{
+    position: relative;
+    height: 20.5rem;
+}
+
+.pie img{
+    width: 100%;
+    height: auto;
+}
+
+.pie .hundred {
+    color: #1f1f1f;
+    font-size: 3.3rem;
+    font-family: ProximaBlack;
+    position: absolute;
+    top: calc(50% - 1.8rem);
+    left: calc(50% - 3.8rem);
+}
+
+.lab {
+    position: absolute;
+    top: calc(50% - 1.8rem);
+    left: calc(50% - 3.8rem);
+}
+
+.lab h3{
+    color: #393a3b;
+    font-size: 1.3rem;
+    font-family: ProximaBlack;
+    position: absolute;
+}
+
+.lab h3 span {
+    color: #f7d700;
+    font-size: 3.3rem;
+    font-family: ProximaBlack;
+    position: absolute;
+    top: 0.1rem;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.desc{
+    padding: 4.6rem 0 3rem 0;
+    background: url(../img/hand.jpg) no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.peps img{
+    position: relative;
+    top: -6rem;
+    margin-left: 9rem;
+    width: 39rem;
+    height: auto;
+}
+
+.trust {
+    width: 50rem;
+    margin-left: 7rem;
+    margin-bottom: 1.7rem;
+}
+
+.trust h4 {
+    color: #f7d700;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.trust p {
+    font-size: 1.25rem;
+    color: #cecece;
+}
+
+#gold {
+    left: -15.5rem; top: -6rem;
+}
+
+#invest {
+    right: -27.5rem; top: -6rem;
+}
+
+#longterm {
+    right: -27.6rem; bottom: -9rem;
+}
+
 @media screen and (max-width: 1800px) {
     .hero {
         padding-left: 12.6rem;
@@ -772,6 +950,26 @@ form.small .submit:hover {
 
 
 @media screen and (max-width: 1500px) {
+    /*text*/
+    .heads h1, .passive h1 {
+        font-size: 2.8rem;
+        line-height: 3rem;
+    }
+    .heads p, .passive p, .trust p {
+        font-size: 1.1rem;
+    }
+    .pie {
+        padding-left: 6rem;
+    }
+    .trust {
+        width: 47rem;
+    }
+    .peps img {
+        margin-left: 2rem;
+    }
+    .stairs {
+        width: 41rem;
+    }
     /*advantages*/
     .adv > div {
         padding: 3rem 3.1rem 3rem 3rem;
@@ -863,6 +1061,38 @@ form.small .submit:hover {
     .logo-big {
         height: 35rem;
     }
+    /* text*/
+    .heads p, .passive p{
+        width: 27rem;
+    }
+    #gold{
+        top: -4rem;
+        left: -13rem;
+    }
+    #invest {
+        right: -17rem;
+    }
+    #longterm {
+        bottom: -7.5rem;
+        right: -19rem;
+    }
+    .pie {
+        padding-left: 5rem;
+        padding-right: 6rem;
+    }
+    .trust {
+        width: 31rem;
+    }
+    .peps img {
+        margin-left: 0rem;
+        width: 33rem;
+    }
+    .stairs {
+        width: 33rem;
+    }
+    .invite {
+        padding-bottom: 3rem;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -942,6 +1172,47 @@ form.small .submit:hover {
     }
     footer > div > p > img {
         height: 1rem
+    }
+
+    /* text*/
+    .heads p, .passive p{
+        width: 24rem;
+    }
+    #gold{
+        top: -3.5rem;
+        left: -13rem;
+    }
+    .pie {
+        padding-left: 2rem;
+    }
+    .desc {
+        flex-direction: column;
+        align-items: center;
+    }
+    #trustiki{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .trust {
+        width: 51.5rem;
+        margin-left: 0;
+    }
+    .peps img {
+        margin-left: 0rem;
+        width: 24rem;
+        top: -2rem;
+    }
+    .strats.peps {
+        padding-bottom: 2rem;
+    }
+    .stairs {
+        width: 26.5rem;
+    }
+    .passive {
+        padding-bottom: 3rem;
     }
 }
 
@@ -1104,9 +1375,43 @@ form.small .submit:hover {
     .copy {
         padding: 1rem 0;
     }
+    /* text*/
+    .strats {
+        flex-direction: column;
+    }
+    .heads h1, .passive h1,
+    .heads.reverse h1, .heads.reverse p,
+    .heads p, .passive p {
+        text-align: center;
+    }
+    .heads , .heads.reverse{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pie {
+        margin-top: 3rem;
+        padding: 0 5rem;
+    }
+    .stairs {
+        margin-top: 2rem;
+    }
+    .trust {
+        width: 35rem;
+    }
+    .peps img {
+        margin-top: 3rem;
+    }
+    .invite {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 776px) { 
+    .trust {
+        width: 24rem;
+    }
     .logo-big {
         height: 22rem;
         right: 0;
@@ -1247,6 +1552,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 430px) {
+    form.small {
+        padding-left: 0;
+    }
     .logo-big {
         height: 15rem;
         right: 0;
@@ -1309,5 +1617,37 @@ form.small .submit:hover {
     }
     input {
         width: 100%;
+    }
+
+    .heads h1, .passive h1 {
+        font-size: 2rem;
+        line-height: 2.3rem;
+    }
+    .heads p, .passive p {
+        width: 18rem;
+    }
+    .trust, .peps img, .stairs{
+        width: 18rem;
+    }
+    #longterm, #invest, #gold{
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 2rem;
+    }
+    .pie .circle {
+        width: 18rem;
+        padding-bottom: 6rem;
+    }
+    .pie {
+        padding: 0;
+    }
+    .lab {
+        position: relative;
+        top: 2rem;
+        left: 0;
+    }
+    .pie .hundred {
+        top: calc(50% - 6.1rem);
     }
 }

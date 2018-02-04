@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <div class="whyus">
+    <!--div class="whyus">
         <h3>Последние новости</h3>
         <h4>подзаголовок тут</h4>
         <div class="yellow"></div>
@@ -163,7 +163,7 @@
                     каждому инвестору.</p>
             </div>
         </div>
-    </div>
+    </div-->
 
     <div class="feedback">
         <h3 class="white">Отзывы клиентов</h3>
@@ -218,12 +218,12 @@
                 <div class="yellow"></div>
                 <p>Пожалуйста заполните форму и мы позвоним вам в ближайшее время.</p>
             </div>
-            <form>
-                <input type="text" placeholder="Имя">
-                <input type="text" placeholder="E-mail*">
-                <input type="text" placeholder="Тема*">
-                <input type="text" placeholder="Компания">
-                <textarea name="" id="" cols="30" rows="5" placeholder="Сообщение"></textarea>
+            <form action="/contact" method="POST">
+                <input type="text" placeholder="Имя" name="name">
+                <input type="text" placeholder="E-mail*" name="email">
+                <input type="text" placeholder="Тема*" name="thread">
+                <input type="text" placeholder="Компания" name="company">
+                <textarea name="" id="" cols="30" rows="5" placeholder="Сообщение*" name="message"></textarea>
                 <a href="#" class="submit">Отправить</a>
             </form>
         </div>
@@ -259,9 +259,9 @@
         </div>
         <div>
             <h3>Напишите нам</h3>
-            <form class="small">
-                <input type="text" placeholder="Имя*">
-                <input type="text" placeholder="Тема*">
+            <form class="small" action="/contact" method="POST">
+                <input type="email" placeholder="Email*" name="name">
+                <input type="text" placeholder="Тема*" name="thread">
                 <textarea name="" id="" cols="30" placeholder="Сообщение*" rows="3"></textarea>
                 <a class="submit">Отправить</a>
             </form>

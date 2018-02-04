@@ -16,6 +16,10 @@
                 <li><span>Навигация</span></li>
                 <li><img src="./img/light-bulb.svg" alt=""> <a href="/marketing">Главная</a></li>
                 <li><img src="./img/wallet.svg" alt=""> <a href="/wallet">Баланс</a></li>
+                <% if(level == 9) { %>
+                  <li><img src="./img/users.svg" alt=""> <a href="/admin/users">Пользователи</a></li>
+                  <li><img src="./img/list.svg" alt=""> <a href="/admin/requests">Заявки</a></li>
+                <% } %>
                 <li><img src="./img/network.svg" alt=""> <a href="/refs1/0">Рефералы 1 ур.</a></li>
                 <li><img src="./img/network.svg" alt=""> <a href="/refs2/0">Рефералы 2 ур.</a></li>
                 <li><img src="./img/money.svg" alt=""> <a href="/withdrawal">Вывод</a></li>
