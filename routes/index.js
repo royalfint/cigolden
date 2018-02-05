@@ -193,7 +193,7 @@ app.post("/signup", function(req, res) {
                                         ourreferal = req.session.referal;
                                     User.findByIdAndUpdate(req.user.id, {
                                         email: req.body.email,
-                                        confirmed: 1, //TODO MAKE IT REGULAR
+                                        confirmed: 0,
                                         balance: 0,
                                         status: 0,
                                         net_profit: 0,
