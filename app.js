@@ -27,7 +27,8 @@ app.use(passport.session());
 app.use(flash());
 app.use(function(req, res, next) {
    res.locals.currentUser = req.user;
-   res.locals.siteurl = "http://cigolden-royalfint.c9users.io";
+   //res.locals.siteurl = "http://cigolden-royalfint.c9users.io";
+   res.locals.siteurl = "http://www.cigolden.com";
    res.locals.error = req.flash("error");
    res.locals.level = 0;
    res.locals.success = req.flash("success");

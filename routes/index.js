@@ -24,7 +24,7 @@ app.get("/signedup", function(req, res) {
       to: passedVariable,
       from: 'no-reply@cigolden.com',
       subject: 'Подтверждение аккаунта',
-      html: 'Пройдите по ссылке для подтверждения вашего почтового адреса: <a href="' + res.locals.siteurl +'confirming/' + help.encrypt(passedVariable) + '">Нажмите здесь.</a>',
+      html: 'Пройдите по ссылке для подтверждения вашего почтового адреса: <a href="' + res.locals.siteurl +'/confirming/' + help.encrypt(passedVariable) + '">Нажмите здесь.</a>',
     };
     sgMail.send(msg);
     
