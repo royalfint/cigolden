@@ -24,7 +24,7 @@ app.get("/signedup", function(req, res) {
       to: passedVariable,
       from: 'no-reply@cigolden.com',
       subject: 'Подтверждение аккаунта',
-      html: 'Пройдите по ссылке для подтверждения вашего почтового адреса: <a href="https://cigolden-royalfint.c9users.io/confirming/' + help.encrypt(passedVariable) + '">Нажмите здесь.</a>',
+      html: 'Пройдите по ссылке для подтверждения вашего почтового адреса: <a href="' + res.locals.siteurl +'confirming/' + help.encrypt(passedVariable) + '">Нажмите здесь.</a>',
     };
     sgMail.send(msg);
     
@@ -231,7 +231,7 @@ app.post("/contact", function(req, res) {
                 sgMail.setApiKey(api_key);
                 const msg = {
                   to: "royalfint@gmail.com",
-                  from: req.body.email,
+                  from: "no-reply@cigolden.com",
                   subject: req.body.thread,
                   html: req.body.message
                 };

@@ -92,7 +92,7 @@ app.post("/resetpass", function(req, res){
           to: req.body.email,
           from: 'no-reply@cigolden.com',
           subject: 'Сброс пароля',
-          html: 'Пройдите по ссылке для смены вашего пароля: <a href="https://cigolden-royalfint.c9users.io/resetpass/' + help.encrypt(req.body.email) + '">Нажмите здесь.</a>',
+          html: 'Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(req.body.email) + '">Нажмите здесь.</a>',
         };
         sgMail.send(msg);
         req.flash("success", "Сообщение отправлено!");

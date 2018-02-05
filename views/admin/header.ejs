@@ -5,12 +5,12 @@
         <link rel="stylesheet" href="../../css/admin.css">
     </head>
     <body>
-        <input id="refURL" type="text" value="http://cigolden-royalfint.c9users.io/r/<%= currentUser.id %>">
+        <input id="refURL" type="text" value="<%= siteurl %>/r/<%= currentUser.id %>">
         <div class="wrapper">
             <nav>
               <header>
                 Привет, <%= currentUser.username %>
-                <div class="close" onclick="closeNav()"><img src="./img/cancel.svg"></div>
+                <div class="close" onclick="closeNav()"><img src="../../img/cancel.svg"></div>
               </header>
               <ul>
                 <li><span>Навигация</span></li>
@@ -28,6 +28,8 @@
             </nav>
             <main>
               <div class="bar">
-                <img src="../../img/logo-dark.svg" class="logo"></img>
-                <button>Пригласить</button>
+                <div>
+                  <img src="../../img/logo-dark.svg" class="logo" onclick="openNav()"></img>
+                </div>
+                <button onclick="copyRef()">Пригласить</button>
               </div>
