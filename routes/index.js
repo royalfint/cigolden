@@ -230,8 +230,8 @@ app.post("/contact", function(req, res) {
             if(req.body.message && req.body.message.length > 0) {
                 sgMail.setApiKey(api_key);
                 const msg = {
-                  to: "royalfint@gmail.com",
-                  from: "no-reply@cigolden.com",
+                  to: res.locals.adminemail,
+                  from: req.body.email,
                   subject: req.body.thread,
                   html: req.body.message
                 };

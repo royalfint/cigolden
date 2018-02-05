@@ -700,6 +700,7 @@ form.small {
 }
 
 form.small input, form.small textarea {
+    box-sizing: border-box;
     width: 100%;
     margin-bottom: 1rem;
     background: #2e2e2e;
