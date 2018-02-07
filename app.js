@@ -11,8 +11,8 @@ var adminRoutes = require("./routes/admin"),
     indexRoutes = require("./routes/index"),
     panelRoutes = require("./routes/panel");
     
-mongoose.connect("mongodb://localhost/cigolden_db");
-//mongoose.connect("mongodb://ciadmin:YtEpyftimVjq1Gfhjkm@ds113648.mlab.com:13648/cigolden");
+//mongoose.connect("mongodb://localhost/cigolden_db");
+mongoose.connect("mongodb://ciadmin:YtEpyftimVjq1Gfhjkm@ds113648.mlab.com:13648/cigolden");
 
 app.set("view engine", "ejs");
 app.use(require("express-session")({
