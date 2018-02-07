@@ -232,6 +232,8 @@ app.get("/withdrawal", help.isLoggedIn, function(req, res){
             available_funds += user.balance;
         }
         
+        available_funds += Number(user.referal_profit);
+        
         res.render("panel/withdrawal", {user: user, available_funds: available_funds});
     });
 });

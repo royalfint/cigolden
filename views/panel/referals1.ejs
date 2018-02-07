@@ -3,6 +3,7 @@
               <div class="flex-grid">
                   <div>
                     <h2>Список прямо приглашенных вами людей</h2>
+                    <p class="mgbt2">Ваша награда: <%= user.referal_profit %><br></p>
                     <div class="user-list">
                     <% user.refs1.forEach(function(user_) { %>
                         <a href="/refs1/user/<%= user_._id %>"><%= user_.username %></a>

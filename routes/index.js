@@ -197,6 +197,7 @@ app.post("/signup", function(req, res) {
                                         balance: 0,
                                         status: 0,
                                         net_profit: 0,
+                                        referal_profit: 0,
                                         deposit_percent: 0,
                                         refs1_percent: 0,
                                         referal: ourreferal,
@@ -271,7 +272,7 @@ app.get("/test", function(req, res){
         if(err) console.log(err);
         
         User.findByIdAndUpdate(gotUsers[0]._id, {
-            status: 9
+            next_payment: new Date()
         }, function(err, newUser){
             if(err) console.log(err);
             res.send("done!");
@@ -279,6 +280,7 @@ app.get("/test", function(req, res){
     });
 });
 
+/*
 app.get("/check", function(req, res){
    User.find({}, function(err, users){
         if(err)
@@ -300,5 +302,5 @@ app.get("/check", function(req, res){
    });
    res.send("finished with the data");
 });
-
+*/
 module.exports = app;

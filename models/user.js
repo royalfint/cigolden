@@ -19,6 +19,7 @@ var UserSchema = new mongoose.Schema({
     widthdrawal_date: Date,
     exit_date: Date,
     signup_date: Date,
+    referal_profit: Number,
     referal: String,
     refs1_percent: Number,
     refs1: [{

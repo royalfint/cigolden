@@ -547,6 +547,10 @@ hr {
     width:100%;
 }
 
+.mgbt2 {
+    margin-bottom: 0.8rem;
+}
+
 .mask
 {
     position: absolute;
