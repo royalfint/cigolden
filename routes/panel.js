@@ -49,7 +49,7 @@ app.post("/resetpass", function(req, res){
                   to: req.body.email,
                   from: 'no-reply@cigolden.com',
                   subject: 'Сброс пароля',
-                  html: 'Ваш логин: ' + resetttingUser[0].username + ' .Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(resetttingUser.email) + '">Нажмите здесь.</a>',
+                  html: 'Ваш логин: ' + resetttingUser[0].username + ' .Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(resetttingUser[0].email) + '">Нажмите здесь.</a>',
                 };
                 sgMail.send(msg);
                 req.flash("success", "Сообщение отправлено!");
