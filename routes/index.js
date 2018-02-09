@@ -114,7 +114,8 @@ app.get("/fullsignup", function(req, res) {
     } //TODO make confirm 1 when confirm 1 unavailable
 });
 
-app.post("/login", help.tolowercase, passport.authenticate("local", {
+//help.tolowercase
+app.post("/login", passport.authenticate("local", {
         successRedirect: "/wallet",
         failureRedirect: "/login",
         failureMessage: "Неверный логин или пароль"
@@ -124,6 +125,7 @@ app.post("/login", help.tolowercase, passport.authenticate("local", {
 app.get("/signup", function(req, res) {
     res.render("signup");
 });
+
 
 app.post("/signup", help.tolowercase, function(req, res) {
     if(req.body.email){
