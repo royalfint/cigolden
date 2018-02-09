@@ -114,7 +114,7 @@ app.get("/fullsignup", function(req, res) {
     } //TODO make confirm 1 when confirm 1 unavailable
 });
 
-app.post("/login", passport.authenticate("local", {
+app.post("/login", help.tolowercase, passport.authenticate("local", {
         successRedirect: "/wallet",
         failureRedirect: "/login",
         failureMessage: "Неверный логин или пароль"
@@ -125,7 +125,7 @@ app.get("/signup", function(req, res) {
     res.render("signup");
 });
 
-app.post("/signup", function(req, res) {
+app.post("/signup", help.tolowercase, function(req, res) {
     if(req.body.email){
         if(!help.validateEmail(req.body.email)){
             req.flash("error", "Введите правильный email!");
