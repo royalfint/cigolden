@@ -87,16 +87,25 @@ app.get("/resetpass/:useremail", function(req, res){
 
 app.post("/resetpass", function(req, res){
    if(req.body.email && req.body.email.length > 0) {
-        sgMail.setApiKey(api_key);
-        const msg = {
-          to: req.body.email,
-          from: 'no-reply@cigolden.com',
-          subject: 'Сброс пароля',
-          html: 'Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(req.body.email) + '">Нажмите здесь.</a>',
-        };
-        sgMail.send(msg);
-        req.flash("success", "Сообщение отправлено!");
-        res.redirect("/reset");
+       User.find({email: req.body.email}, function(err, resetttingUser){
+           if(err) console.log(err);
+           
+           if(resetttingUser[0]){
+               sgMail.setApiKey(api_key);
+                const msg = {
+                  to: req.body.email,
+                  from: 'no-reply@cigolden.com',
+                  subject: 'Сброс пароля',
+                  html: 'Ваш логин: ' + resetttingUser[0].username +' .Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(req.body.email) + '">Нажмите здесь.</a>',
+                };
+                sgMail.send(msg);
+                req.flash("success", "Сообщение отправлено!");
+                res.redirect("/reset");
+           }else {
+               req.flash("error", "Нет пользователя с такой почтой!");
+               res.redirect("/reset")
+           }
+       });
    } else {
        req.flash("error", "Введите ваш email!");
        res.redirect("/reset");
