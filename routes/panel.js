@@ -32,19 +32,60 @@ app.get("/marketing", help.isUser, function(req, res) {
    res.render("marketing");
 });
 
+/* После нажатия на кнопку забыл пароль попадаем сюда*/
 app.get("/reset", function(req, res){
     res.render("reset");
 });
 
+/* Форма с почтой забыл пароль отправляется сюда*/
+app.post("/resetpass", function(req, res){
+   if(req.body.email && req.body.email.length > 0) { //если ввели какую то почту то
+       User.find({email: req.body.email}, function(err, resetttingUser){
+           if(err) console.log(err);
+           
+           if(resetttingUser[0]){
+               sgMail.setApiKey(api_key);
+                const msg = {
+                  to: req.body.email,
+                  from: 'no-reply@cigolden.com',
+                  subject: 'Сброс пароля',
+                  html: 'Ваш логин: ' + resetttingUser[0].username + ' .Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(resetttingUser.email) + '">Нажмите здесь.</a>',
+                };
+                sgMail.send(msg);
+                req.flash("success", "Сообщение отправлено!");
+                res.redirect("/reset");
+           } else { 
+               req.flash("error", "Нет пользователя с такой почтой!");
+               res.redirect("/reset")
+           }
+       });
+   } else { //если не ввели в поле ничего
+       req.flash("error", "Введите ваш email!");
+       res.redirect("/reset");
+   }
+});
+
+/* с письма восстановления пароль пользователь попадет сюда */
+app.get("/resetpass/:useremail", function(req, res){
+    if(req.params.useremail && req.params.useremail.length > 0){
+        res.render("resetform", {email: req.params.useremail});
+    } else{
+        res.send("Неправлиьная почта!");
+    }
+});
+
+/* с формы выше новый пароль отправляется сюда*/
 app.post("/resetnewpass", function(req, res) {
-    var email = help.decrypt(req.body.email);
-   if(req.body.pass1 && req.body.pass1.length > 0) {
+    var email = help.decrypt(req.body.email); // разшифровываем почту
+    email.trim(); //чистим от пробелов
+    
+    if(req.body.pass1 && req.body.pass1.length > 0) {
         if(req.body.pass2 && req.body.pass2.length > 0) {
-            console.log(req.body.pass2 + "|" + req.body.pass1);
-            if(String(req.body.pass2) == String(req.body.pass1)) {
-                console.log(email);
-                User.find({email: email}, function(err, changer){
-                    if(changer){
+            if(String(req.body.pass2) == String(req.body.pass1)) { //если оба пароля присутствуют и сходятся
+            
+                User.find({email: email}, function(err, changer){ //ищем пользователя с такой почтой
+                
+                    if(changer[0]){ //если есть человек с такой почтой
                         User.findByUsername(changer[0].username).then(function(sanitizedUser){
                             if (sanitizedUser){
                                 sanitizedUser.setPassword(req.body.pass2, function(err){
@@ -54,13 +95,13 @@ app.post("/resetnewpass", function(req, res) {
                                     req.flash("success", "Пароль успешно изменен!");
                                     res.redirect("/login");
                                 });
-                            } else {
-                                req.flash("error", "Нет такого пользователя!");
-                                res.redirect("/settings");
                             }
                         },function(err){
                             console.error(err);
                         });
+                    } else {
+                        req.flash("error", "Нет такого пользователя!");
+                        res.redirect("/settings");
                     }
                 });
             }else {
@@ -77,41 +118,7 @@ app.post("/resetnewpass", function(req, res) {
    }
 });
 
-app.get("/resetpass/:useremail", function(req, res){
-    if(req.params.useremail && req.params.useremail.length > 0){
-        res.render("resetform", {email: req.params.useremail});
-    } else{
-        res.send("");
-    }
-});
-
-app.post("/resetpass", function(req, res){
-   if(req.body.email && req.body.email.length > 0) {
-       User.find({email: req.body.email}, function(err, resetttingUser){
-           if(err) console.log(err);
-           
-           if(resetttingUser[0]){
-               sgMail.setApiKey(api_key);
-                const msg = {
-                  to: req.body.email,
-                  from: 'no-reply@cigolden.com',
-                  subject: 'Сброс пароля',
-                  html: 'Ваш логин: ' + resetttingUser[0].username +' .Пройдите по ссылке для смены вашего пароля: <a href="' + res.locals.siteurl +'/resetpass/' + help.encrypt(req.body.email) + '">Нажмите здесь.</a>',
-                };
-                sgMail.send(msg);
-                req.flash("success", "Сообщение отправлено!");
-                res.redirect("/reset");
-           }else {
-               req.flash("error", "Нет пользователя с такой почтой!");
-               res.redirect("/reset")
-           }
-       });
-   } else {
-       req.flash("error", "Введите ваш email!");
-       res.redirect("/reset");
-   }
-});
-
+/* форма смены пароля внутри личного кабинета */
 app.post("/reset", help.isLoggedIn, function(req, res){
     if(req.body.old && req.body.old.length > 0){
         if(req.body.new && req.body.new.length > 0){
