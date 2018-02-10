@@ -88,7 +88,7 @@ app.get("/confirming/:id", function(req, res) {
     console.log(useremail);
     User.find({email: useremail}, function(err, foundUser){
         console.log("user with the email: " + foundUser);
-        if(foundUser){
+        if(foundUser[0]){
             if(foundUser[0].confirmed == 0){
                 User.findByIdAndUpdate(foundUser[0].id, {confirmed: 1}, function(err, confUser){
                    if(err) console.log(err);
@@ -99,7 +99,8 @@ app.get("/confirming/:id", function(req, res) {
                 res.redirect("/fullsignup?userid=" + req.params.id);
             }
         } else {
-            console.log("no user with such email");
+            req.flash("error", "Нет пользователя с таким email чтобы подтвердить!");
+            res.redirect("/login");
         }
     });
 });
