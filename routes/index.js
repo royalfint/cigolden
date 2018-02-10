@@ -195,7 +195,7 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                     if(req.session.referal)
                                         ourreferal = req.session.referal;
                                     User.findByIdAndUpdate(req.user.id, {
-                                        email: help.tolowercasef(req.body.email),
+                                        email: req.body.email,
                                         confirmed: 0,
                                         balance: 0,
                                         status: 0,
