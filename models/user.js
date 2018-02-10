@@ -21,6 +21,7 @@ var UserSchema = new mongoose.Schema({
     signup_date: Date,
     referal_profit: Number,
     referal: String,
+    upgrades: Number,
     refs1_percent: Number,
     refs1: [{
         username: String,

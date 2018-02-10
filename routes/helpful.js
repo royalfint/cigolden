@@ -37,7 +37,13 @@ help.validateEmail = function (email) {
 
 help.tolowercase = function(req, res, next){
     req.body.username = req.body.username.toLowerCase();
+    req.body.username.trim();
     next();
+}
+
+help.tolowercasef = function(stri) {
+    stri.trim()
+    return stri.toLowerCase();
 }
 
 help.isAdmin = function (req, res, next){

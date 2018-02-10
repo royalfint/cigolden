@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Войдите в систему</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/admin.css">
+    </head>
+    <body>
+        <div class="loginroom">
+            <form action="/addref" method="POST" class="loginbox">
+                <p>Добавить реферала</p>
+                <input type="text" name="parent" placeholder="Parent" required>
+                <input type="text" name="referal" placeholder="Referal" required>
+                <input type="text" name="date" placeholder="23.11.17" required>
+                <input type="text" name="amount" placeholder="1 000 000" required>
+                <% if (error && error.length > 0) { %>
+                    <p class="error"><img src="./img/error.svg" class="icon" alt=""> <%= error %></p>
+                <% } %>
+                <input type="submit" class="submit" value="Продолжить">
+            </form>
+        </div>
+    </body>
+</html>

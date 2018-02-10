@@ -114,8 +114,7 @@ app.get("/fullsignup", function(req, res) {
     } //TODO make confirm 1 when confirm 1 unavailable
 });
 
-//help.tolowercase
-app.post("/login", passport.authenticate("local", {
+app.post("/login", help.tolowercase, passport.authenticate("local", {
         successRedirect: "/wallet",
         failureRedirect: "/login",
         failureMessage: "Неверный логин или пароль"
@@ -126,7 +125,6 @@ app.get("/signup", function(req, res) {
     res.render("signup");
 });
 
-
 app.post("/signup", help.tolowercase, function(req, res) {
     if(req.body.email){
         if(!help.validateEmail(req.body.email)){
@@ -134,7 +132,8 @@ app.post("/signup", help.tolowercase, function(req, res) {
             return res.redirect("back");
         } else {
              User.find({email: req.body.email}, function(err, anotherUser){
-                console.log(anotherUser);
+                 if (err) console.log(err);
+                 
                if(anotherUser && anotherUser.length > 0){
                    req.flash("error", "Данный email уже используется!");
                    return res.redirect("back");
@@ -158,6 +157,7 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                                newRefs1.push({
                                                     username: req.user.username,
                                                     active: false,
+                                                    paid: false,
                                                     balance: 0,
                                                     percent: refUser.refs1_percent,
                                                     reward_date: 0,
@@ -174,6 +174,7 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                                                newRefs2.push({
                                                                     username: req.user.username,
                                                                     active: false,
+                                                                    paid: false,
                                                                     balance: 0,
                                                                     percent: secondUser.refs2_percent,
                                                                     reward_date: 0,
@@ -194,13 +195,14 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                     if(req.session.referal)
                                         ourreferal = req.session.referal;
                                     User.findByIdAndUpdate(req.user.id, {
-                                        email: req.body.email,
+                                        email: help.tolowercasef(req.body.email),
                                         confirmed: 0,
                                         balance: 0,
                                         status: 0,
                                         net_profit: 0,
                                         referal_profit: 0,
                                         deposit_percent: 0,
+                                        upgrades: 0,
                                         refs1_percent: 0,
                                         referal: ourreferal,
                                         refs2_percent: 0,
@@ -268,7 +270,7 @@ app.get("/r/:id", function(req, res){
 });
 
 // TEST
-
+/*
 app.get("/test", function(req, res){
     User.find({username: "royalfint"}, function(err, gotUsers){
         if(err) console.log(err);
@@ -280,6 +282,27 @@ app.get("/test", function(req, res){
             res.send("done!");
         });
     });
+    var logf = "";
+    
+    User.find({}, function(err, users){
+       users.forEach(function(user){
+            var email = help.tolowercasef(user.email);
+           // console.log(email);
+            User.findByIdAndUpdate(user.id, { }, function(err, newUser){
+                console.log(newUser.email);
+            });
+       });
+    });
+    
+    res.send(logf);
+});*/
+
+app.get("/addref", function(req, res) {
+   res.render("addref");
+});
+
+app.post("/addref", function(req, res) {
+    
 });
 
 /*

@@ -14,14 +14,14 @@ app.post("/admin/action/:action", help.isAdmin, function(req, res) {
                
                 if(err)
                     console.log(err);
-                if(user.deposit_percent > 0 && user.balance == 0) { //делаем первый депозит
+                if(user.deposit_percent > 0) { //делаем первый депозит
                     
                     User.findById(userid, function(err, payingUser){ //ищем пользователя чтобы глянуть кто пригласил
                        if(payingUser.referal && payingUser.referal != "") {
                            console.log("кто пригласил: " + payingUser.referal);
                            User.findById(new ObjectID(payingUser.referal), function(err, gotUser){
                                 //НАГРАЖДЕМ ПРИГЛАСИТЕЛЯ 2 УР!!!
-                                console.log(gotUser.referal);
+                                console.log("кто пригласил пригласителя" + gotUser.referal);
                                 if(gotUser.referal && gotUser.referal.length > 0){
                                     User.findById(new ObjectID(gotUser.referal), function(err, secondUser){ //ищем пользователя чтобы глянуть кто пригласил пригласителя
                                         console.log("кто пригласил пригласителя: " + gotUser.referal);
@@ -32,31 +32,33 @@ app.post("/admin/action/:action", help.isAdmin, function(req, res) {
                                                 mofi.active = true;
                                                 mofi.deposit_date = new Date();
                                                 mofi.balance = Number(req.body.amount);
-                                                mofi.reward_date = help.daysToDate(new Date(), 31);
+                                                mofi.reward_date = new Date(); //АКЦИЯ получи награду за реферал сегодня help.daysToDate(new Date(), 31);
                                             }
                                         });
                                         console.log("new refs: "+ list);
                                         User.findByIdAndUpdate(new ObjectID(gotUser.referal), {refs2: list} , function(err, reward2User){
                                         }); //наградили пригласителя 2 уровня
                                     });
-                                }
+                                } else 
+                                    console.log("У пригласителя нету пригласителя");
                                    
+                                //НАГРАЖДЕМ ПРИГЛАСИТЕЛЯ 1 уровня!!!
                                 var list = gotUser.refs1;
                                 list.forEach(function(mofi){
                                     if(String(mofi.username) == String(user.username)){
                                         mofi.active = true;
                                         mofi.deposit_date = new Date();
                                         mofi.balance = Number(req.body.amount);
-                                        mofi.reward_date = help.daysToDate(new Date(), 31);
+                                        mofi.reward_date = new Date(); //АКЦИЯ получи награду за реферал сегодня help.daysToDate(new Date(), 31);
                                     }
                                 });
                                 console.log("new refs: "+ list);
                                User.findByIdAndUpdate(new ObjectID(payingUser.referal), {refs1: list} , function(err, rewardUser){
                                    console.log("Наградили пригласителя 1го уровня");
-                               }); //наградили пригласителя 1 уровня
+                               });
                            });
-                       } else 
-                        console.log("no referrer!");
+                        } else 
+                            console.log("no referrer!");
                     });
 
                     User.findByIdAndUpdate(userid, { //making an investment
@@ -67,80 +69,11 @@ app.post("/admin/action/:action", help.isAdmin, function(req, res) {
                         exit_date: help.daysToDate(new Date(), 186)
                     }, function(err, newUser){
                         if(err)
-                        //TODO CAlculate previous profit
                             console.log(err);
                             
                             req.flash("success", "Баланс успешно обновлен!");
                             res.redirect("back");
                     }); 
-                } else if(user.deposit_percent > 0 && user.balance > 0){ //если это доливка а не первый депозит
-                    User.findById(userid, function(err, ourUser){
-                        if(err) console.log(err);
-                        
-                        User.findById(userid, function(err, payingUser){ //ищем пользователя чтобы глянуть кто пригласил
-                           if(payingUser.referal && payingUser.referal != "") {
-                               console.log("кто пригласил: " + payingUser.referal);
-                               User.findById(new ObjectID(payingUser.referal), function(err, gotUser){
-                                    //НАГРАЖДЕМ ПРИГЛАСИТЕЛЯ 2 УР!!!
-                                    console.log(gotUser.referal);
-                                    if(gotUser.referal && gotUser.referal.length > 0){
-                                        User.findById(new ObjectID(gotUser.referal), function(err, secondUser){ //ищем пользователя чтобы глянуть кто пригласил пригласителя
-                                            console.log("кто пригласил пригласителя: " + gotUser.referal);
-                                            
-                                            var list = secondUser.refs2;
-                                            list.forEach(function(mofi){
-                                                if(String(mofi.username) == String(user.username)){
-                                                    mofi.active = true;
-                                                    mofi.deposit_date = new Date();
-                                                    mofi.balance = Number(req.body.amount);
-                                                    mofi.reward_date = help.daysToDate(new Date(), 31);
-                                                }
-                                            });
-                                            console.log("new refs: "+ list);
-                                            User.findByIdAndUpdate(new ObjectID(gotUser.referal), {refs2: list} , function(err, reward2User){
-                                            }); //наградили пригласителя 2 уровня
-                                        });
-                                    }
-                                       
-                                    var list = gotUser.refs1;
-                                    list.forEach(function(mofi){ //TODO add rewards for single user
-                                        if(String(mofi.username) == String(user.username)){
-                                            mofi.active = true;
-                                            mofi.deposit_date = new Date();
-                                            mofi.balance = Number(req.body.amount);
-                                            mofi.reward_date = help.daysToDate(new Date(), 31);
-                                        }
-                                    });
-                                    console.log("new refs: "+ list);
-                                   User.findByIdAndUpdate(new ObjectID(payingUser.referal), {refs1: list} , function(err, rewardUser){
-                                       console.log("Наградили пригласителя 1го уровня");
-                                   }); //наградили пригласителя 1 уровня
-                               });
-                           } else 
-                            console.log("no referrer!");
-                        });
-                   
-                        //текущая прибыль
-                        var next_profit = (Number(ourUser.balance) + Number(ourUser.net_profit)) * (Number(ourUser.deposit_percent) / 100);
-                        console.log("След прибыль: " + next_profit);
-                        var daysToPaying = help.tillDate(ourUser.next_payment);
-                        console.log("Дней до след прибыли: "+ daysToPaying);
-                        var cur_profit = Number(next_profit) / 31 * (31 - Number(daysToPaying));
-                        console.log("Итого нам заплатят: " + cur_profit);
-                        User.findByIdAndUpdate(userid, {
-                            net_profit: Number(ourUser.net_profit) + Number(cur_profit),
-                            balance: Number(ourUser.balance) + Number(req.body.amount),
-                            deposit_date: new Date(),
-                            next_payment: help.daysToDate(new Date(), 31),
-                            widthdrawal_date: help.daysToDate(new Date(), 93),
-                            exit_date: help.daysToDate(new Date(), 186)
-                        }, function(err, newUser){
-                            if (err) console.log(err);
-                           
-                            req.flash("success", "Баланс успешно обновлен!!");
-                            res.redirect("back");
-                        });
-                    });
                 } else { //she didn't set the deposit percent
                     req.flash("error", "Сначала нужно указать процент!");
                     res.redirect("back");
