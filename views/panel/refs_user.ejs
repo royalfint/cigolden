@@ -36,6 +36,8 @@
       to {transform: rotate(-180deg);}
     <% } else if(Number(daystillpayment) == 31) { %>
       to {transform: rotate(0deg);}
+    <% } else if (Number(daystillpayment) == 999) { %>
+      to {transform: rotate(0deg);}
     <% } else if (Number(daystillpayment) > 15) { %>
       to {transform: rotate(-<%= 180 - ((Number(daystillpayment) - 15) * 12) %>deg);}
     <% } %>
@@ -46,6 +48,8 @@
     <% if (Number(daystillpayment) <= 15) { %>
       to {transform: rotate(-180deg);}
     <% } else if(Number(daystillpayment) == 31) { %>
+      to {transform: rotate(0deg);}
+    <% } else if (Number(daystillpayment) == 999) { %>
       to {transform: rotate(0deg);}
     <% } else if (Number(daystillpayment) > 15) { %>
       to {transform: rotate(-<%= 180 - ((Number(daystillpayment) - 15) * 12) %>deg);}
@@ -68,25 +72,69 @@
                       <div class="success"><%= success %></div>
                     <% } %>
                     <p>Логин: <%= user.username %></p>
-                    <% if(user.active) { %>
-                    <p>Сумма выплаты: <%= reward %></p>
-                    <div class="pie pie1">
-                        <div class="title">Дней осталось до выплаты.</div>
-                        <div class="outer-right mask">
-                            <div class="inner-right"></div>
-                        </div>
                     
-                        <div class="outer-left mask">
-                            <div class="inner-left"></div>
+                    <div class="pies">
+                      <% if(user.active && user.paid == false) { %>
+                        <div>
+                          <p>Награда за первый депозит: <%= reward %></p>
+                          <div class="pie pie1">
+                              <div class="title">Дней осталось до выплаты.</div>
+                              <div class="outer-right mask">
+                                  <div class="inner-right"></div>
+                              </div>
+                          
+                              <div class="outer-left mask">
+                                  <div class="inner-left"></div>
+                              </div>
+                              <div class="content">
+                                  <span><%= daystillpayment %></span>
+                              </div>
+                              <div class="arrow"></div>
+                          </div>
                         </div>
-                        <div class="content">
-                            <span><%= daystillpayment %></span>
+                      <% } %>
+                      
+                      <% if(user.active && user.upgrades > 0 && user.paid_two == false) { %>
+                        <div>
+                          <p>Награда за второй депозит: <%= reward %></p>
+                            <div class="pie pie1">
+                                <div class="title">Дней осталось до выплаты.</div>
+                                <div class="outer-right mask">
+                                    <div class="inner-right"></div>
+                                </div>
+                            
+                                <div class="outer-left mask">
+                                    <div class="inner-left"></div>
+                                </div>
+                                <div class="content">
+                                    <span><%= daystillpayment %></span>
+                                </div>
+                                <div class="arrow"></div>
+                            </div>
                         </div>
-                        <div class="arrow"></div>
+                      <% } %>
+                    
+                      <% if(user.active && user.upgrades > 1 && user.paid_three == false) { %>
+                        <div>
+                          <p>Награда за третий депозит: <%= reward %></p>
+                            <div class="pie pie1">
+                                <div class="title">Дней осталось до выплаты.</div>
+                                <div class="outer-right mask">
+                                    <div class="inner-right"></div>
+                                </div>
+                            
+                                <div class="outer-left mask">
+                                    <div class="inner-left"></div>
+                                </div>
+                                <div class="content">
+                                    <span><%= daystillpayment %></span>
+                                </div>
+                                <div class="arrow"></div>
+                            </div>
+                        </div>
+                      <% } %>
+                      
                     </div>
-                    <% } else { %>
-                        <p>Пользователь еще не совершил депозита.</p>
-                    <% } %>
                   </div>
               </div>
 

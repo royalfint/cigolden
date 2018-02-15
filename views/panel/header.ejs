@@ -5,7 +5,6 @@
         <link rel="stylesheet" href="./css/admin.css">
     </head>
     <body>
-        <input id="refURL" type="text" value="<%= siteurl %>/r/<%= currentUser.id %>">
         <div class="wrapper">
             <nav>
               <header>
@@ -33,6 +32,5 @@
                 <div>
                   <img src="./img/logo-dark.svg" class="logo" onclick="openNav()"></img>
                 </div>
-                
-                <button onclick="copyRef()">Пригласить</button>
+                <button class="copyWht" data-clipboard-text="<%= siteurl %>/r/<%= currentUser.id %>">Пригласить</button>
               </div>

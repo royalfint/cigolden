@@ -551,6 +551,17 @@ hr {
     margin-bottom: 0.8rem;
 }
 
+.pies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pies > div {
+  width: 18rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
 .mask
 {
     position: absolute;

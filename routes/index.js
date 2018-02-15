@@ -97,6 +97,9 @@ app.get("/confirming/:id", function(req, res) {
                 });
             }else if(foundUser[0].confirmed == 1){
                 res.redirect("/fullsignup?userid=" + req.params.id);
+            }else if(foundUser[0].confirmed == 2){
+                req.flash("error", "Почта уже подтверждена!");
+                res.redirect("/login");
             }
         } else {
             req.flash("error", "Нет пользователя с таким email чтобы подтвердить!");
@@ -160,6 +163,7 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                                     active: false,
                                                     paid: false,
                                                     balance: 0,
+                                                    upgrades: 0,
                                                     percent: refUser.refs1_percent,
                                                     reward_date: 0,
                                                     deposit_date: 0
@@ -177,6 +181,7 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                                                     active: false,
                                                                     paid: false,
                                                                     balance: 0,
+                                                                    upgrades: 0,
                                                                     percent: secondUser.refs2_percent,
                                                                     reward_date: 0,
                                                                     deposit_date: 0
@@ -201,8 +206,13 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                         balance: 0,
                                         status: 0,
                                         net_profit: 0,
+                                        net_profit_two: 0, //new
+                                        net_profit_three: 0, //new
                                         referal_profit: 0,
                                         deposit_percent: 0,
+                                        deposit_percent_two: 0, //new
+                                        deposit_percent_three: 0, //new
+                                        deposit_back: 0,
                                         upgrades: 0,
                                         refs1_percent: 0,
                                         referal: ourreferal,
@@ -271,32 +281,32 @@ app.get("/r/:id", function(req, res){
 });
 
 // TEST
-/*
 app.get("/test", function(req, res){
-    User.find({username: "royalfint"}, function(err, gotUsers){
+    /*User.find({username: "royalfint"}, function(err, gotUsers){
         if(err) console.log(err);
         
         User.findByIdAndUpdate(gotUsers[0]._id, {
-            next_payment: new Date()
+            next_payment: new Date(),
+            next_payment_two: help.daysToDate(new Date(), 4)
+            status: 9
         }, function(err, newUser){
             if(err) console.log(err);
             res.send("done!");
         });
-    });
-    var logf = "";
-    
+    });*/
+
+        
     User.find({}, function(err, users){
        users.forEach(function(user){
             var email = help.tolowercasef(user.email);
            // console.log(email);
-            User.findByIdAndUpdate(user.id, { }, function(err, newUser){
+            User.findByIdAndUpdate(user.id, {}, function(err, newUser){
                 console.log(newUser.email);
             });
        });
     });
     
-    res.send(logf);
-});*/
+});
 
 app.get("/addref", function(req, res) {
    res.render("addref");
@@ -306,27 +316,4 @@ app.post("/addref", function(req, res) {
     
 });
 
-/*
-app.get("/check", function(req, res){
-   User.find({}, function(err, users){
-        if(err)
-            console.log(err);
-        users.forEach(function(user){
-           if(help.tillDate(user.next_payment) > 0){
-               console.log("Days left " + help.tillDate(user.next_payment) + " for user " + user.username);
-            } else {
-                //pay the guy
-                var future_profit = (user.balance + user.net_profit) * (user.deposit_percent / 100);
-                User.findByIdAndUpdate(user._id, {
-                    net_profit: Number(user.net_profit) + Number(future_profit),
-                    next_payment: help.daysToDate(new Date(), 31)
-                }, function(err, newUser) {
-                        if(err) console.log(err);
-                });
-            } 
-        });
-   });
-   res.send("finished with the data");
-});
-*/
 module.exports = app;

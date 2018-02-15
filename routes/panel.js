@@ -9,13 +9,40 @@ var express = require("express"),
 var api_key = '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';
     
 app.get("/wallet", help.isLoggedIn, function(req, res) {
-    User.find({_id: req.user.id}, function(err, users){
-        if(err)
-            console.log(err);
-        //calcing future profit
-        var lefttillpayment=help.tillDate(users[0].next_payment);
-        var future_profit = (users[0].balance + users[0].net_profit) * (users[0].deposit_percent / 100);
-        res.render("panel/wallet", {user: users[0], daystillpayment: lefttillpayment, next_profit: future_profit});
+    User.findById(req.user.id, function(err, user){
+        if(err) console.log(err);
+        
+        var lefttillpayment = 999; 
+        var closesdayid = -1;
+        
+        if(user.balance > 0 && help.tillDate(user.next_payment) < lefttillpayment){
+            lefttillpayment = help.tillDate(user.next_payment);
+            closesdayid = 1;
+        }
+        
+        if (user.upgrades > 0 && help.tillDate(user.next_payment_two) < lefttillpayment){
+            lefttillpayment = help.tillDate(user.next_payment_two);
+            closesdayid = 2;
+        } 
+        
+        if (user.upgrades > 1  && help.tillDate(user.next_payment_three) < lefttillpayment) {
+            lefttillpayment = help.tillDate(user.next_payment_three);
+            closesdayid = 3;
+        }
+        
+        var future_profit = 0;
+        
+        if(user.upgrades == 2)
+            future_profit = ((user.balance + user.deposit_back + user.net_profit) * (user.deposit_percent / 100)) +
+                ((user.balance_two + user.deposit_back_two + user.net_profit_two) * (user.deposit_percent_two / 100)) + 
+                ((user.balance_three + user.deposit_back_three + user.net_profit_three) * (user.deposit_percent_three / 100));
+        else if (user.upgrades == 1)
+            future_profit = ((user.balance + user.deposit_back + user.net_profit) * (user.deposit_percent / 100)) +
+                ((user.balance_two + user.deposit_back_two + user.net_profit_two) * (user.deposit_percent_two / 100));
+        else if (user.balance > 0)
+            future_profit = ((user.balance + user.deposit_back + user.net_profit) * (user.deposit_percent / 100));
+            
+        res.render("panel/wallet", {user: user, daystillpayment: lefttillpayment, next_profit: future_profit});
     });
 });
 
@@ -268,6 +295,8 @@ app.post("/withdrawal", help.isLoggedIn, function(req, res){
         if(help.tillDate(user.exit_date) <= 0){
             available_funds += user.balance;
         }
+        
+        available_funds += Number(user.referal_profit);
         
         /* requesting */
         if(req.body.method == "card") {

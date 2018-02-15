@@ -1,10 +1,25 @@
+      <script src="./js/jquery-3.2.1.min.js"></script>
+      <script src="./js/clipboard.min.js"></script>
       <script>
-        function copyRef() {
-          document.querySelector('#refURL').select();
-          document.execCommand('copy');
-          alert("Ваша ссылка успешно скопированна!");
-        }
+      $( document ).ready(function() {
+      var clipboardDemos = new Clipboard('.copyWht');
+
+        clipboardDemos.on('success', function(e) {
+            e.clearSelection();
         
+            alert("Успешно скопировано!");
+        
+            showTooltip(e.trigger, 'Copied!');
+        });
+        
+          clipboardDemos.on('error', function(e) {
+              console.error('Action:', e.action);
+              console.error('Trigger:', e.trigger);
+          
+              showTooltip(e.trigger, fallbackMessage(e.action));
+          });
+  });
+
         function openNav(){
           document.querySelector("nav").style.left = "0px";
         }
@@ -13,6 +28,5 @@
           document.querySelector("nav").style.left = "-250px";
         }
       </script>
-      
     </body>
 </html>
