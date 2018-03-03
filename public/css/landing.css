@@ -312,7 +312,7 @@ body.scroll {
 .aboutus {
     background: url(../img/about.jpg) no-repeat center;
     background-size: cover;
-    padding: 0 0 12rem 0;
+    padding: 5rem 0 12rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -322,6 +322,7 @@ body.scroll {
 .aboutus img {
     position: relative;
     top: -4rem;
+    display: none;
 }
 
 .aboutus .articles {
@@ -357,7 +358,7 @@ h4.gray {
     width: 90rem;
     box-sizing: border-box;
     display: flex;
-    height: 40.5rem;
+    height: 32.5rem;
     position: relative;
     top: -4rem;
 }
@@ -692,8 +693,6 @@ footer > div > a {
     font-size: 1.1rem;
 }
 
-
-
 form.small {
     width: 20rem;
     box-sizing: border-box;
@@ -953,6 +952,9 @@ form.small .submit:hover {
 
 
 @media screen and (max-width: 1500px) {
+    .rectFact {
+        height: 35rem;
+    }
     /*text*/
     .heads h1, .passive h1 {
         font-size: 2.8rem;
@@ -1018,6 +1020,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1400px) {
+    .rectFact {
+        height: 29rem;
+    }
     .hero h1 {
         font-size: 3rem;
     }
@@ -1099,6 +1104,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1200px) {
+    .rectFact {
+        height: 31rem;
+    }
     .logo-big {
         height: 30rem;
     }
@@ -1220,6 +1228,7 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1050px) {
+    
     #menu a {
         font-size: 1rem;
         margin: 0 0.5rem;
@@ -1266,7 +1275,7 @@ form.small .submit:hover {
         padding: 3rem 2rem;
     }
     .rectFact {
-        height: 35rem;
+        height: 29rem;
     }
     .text a {
         top: 3.5rem;
@@ -1318,7 +1327,7 @@ form.small .submit:hover {
         width: 20rem;
     }
     .aboutus{
-        padding: 0 0 6rem 0;
+        padding: 4rem 0 6rem 0;
     }
     /*quote*/
     .quote {
@@ -1326,7 +1335,7 @@ form.small .submit:hover {
     }
     /*facts*/
     .rectFact {
-        width: 43rem;
+        width: 35rem;
     }
     .text h3 {
         margin: 0.5rem 0;
@@ -1452,7 +1461,7 @@ form.small .submit:hover {
     /*fact*/
     .rectFact {
         flex-direction: column;
-        height: auto;
+        height: 30rem;
         width: 30rem;
     }
     .rectFact:last-of-type {
