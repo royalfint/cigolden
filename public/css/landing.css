@@ -67,6 +67,76 @@ body.scroll {
     display: flex;
 }
 
+.promotion {
+   display: flex; 
+   margin: 6rem 0;
+}
+
+.promotion > div {
+    width: 44.5rem;
+    padding-right: 2rem;
+    box-sizing: border-box;
+}
+
+.promotion h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.summary {
+    display: flex;
+    margin-top: 6rem;
+}
+
+.car span {
+    z-index: -1;
+    font-family: ProximaBlack;
+    color: #d5cece;
+    font-size: 46px;
+    position: absolute;
+    left: -10px;
+    top: -39px;
+    text-transform: uppercase;
+}
+
+.car {
+    position: relative;
+    display: flex;
+    margin: 0 0 6rem 0;
+    align-items: flex-start;
+}
+
+.car img {
+    width: 50%;
+    height: auto;
+}
+
+.summary > div {
+    width: 50%;
+}
+
+.promargin {
+    margin: 5rem 0 0 0;
+}
+
+.promotion p {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: ProximaLight;
+    margin: 2rem 0;
+}
+
+.promotion h2 span {
+    z-index: -1;
+    font-family: ProximaBlack;
+    color: #d5cece;
+    font-size: 46px;
+    position: absolute;
+    left: -10px;
+    top: -32px;
+}
+
 #menu a{
     margin: 0 1rem;
     font-size: 1.1rem;
@@ -933,6 +1003,15 @@ form.small .submit:hover {
     .adv > div {
         padding: 3rem 2rem 2rem 2rem;
     }
+    .promotion > div {
+        width: 36.5rem;
+    }
+    .car {
+        width: 80%;
+    }
+    .promotion h2 span{
+        font-size: 42px;
+    }
 }
 
 @media screen and (max-width: 1600px) {
@@ -1063,6 +1142,12 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1300px) {
+    .promotion > div {
+        width: 32.5rem;
+    }
+    .promotion h2 span{
+        font-size: 35px;
+    }
     .hero {
         padding-left: 6rem;
     }
@@ -1104,6 +1189,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1200px) {
+    .promotion > div {
+        width: 30.5rem;
+    }
     .rectFact {
         height: 31rem;
     }
@@ -1228,7 +1316,18 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1050px) {
-    
+    .promotion {
+        flex-direction: column;
+    }
+    .promotion > div {
+        width: 100%;
+    }
+    #month {
+        margin-bottom: 6rem;
+    }
+    .promotion h2 span {
+        font-size: 45px;
+    }
     #menu a {
         font-size: 1rem;
         margin: 0 0.5rem;
@@ -1296,6 +1395,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 900px) {
+    .car {
+        width: 95%;
+    }
     .logo-big {
         height: 27rem;
         right: 0;
@@ -1421,6 +1523,20 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 776px) { 
+    .promotion {
+        padding-left: 1rem;
+        box-sizing: border-box;
+    }
+    .promotion h2 span, .car span {
+        font-size: 35px;
+    }
+    .car {
+        flex-wrap: wrap;
+        width: 80%;
+    }
+    .car img  {
+        width: 100%;
+    }
     .trust {
         width: 24rem;
     }
@@ -1461,7 +1577,7 @@ form.small .submit:hover {
     /*fact*/
     .rectFact {
         flex-direction: column;
-        height: 30rem;
+        height: 35rem;
         width: 30rem;
     }
     .rectFact:last-of-type {
@@ -1564,6 +1680,19 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 430px) {
+    .promotion h2 span, .car span {
+        line-height: 28px;
+        top: -45px;
+    }
+    .car span {
+        top: -55px;
+    }
+    .summary {
+        flex-direction: column;
+    }
+    .summary > div {
+        width: 100%;
+    }
     form.small {
         padding-left: 0;
     }
