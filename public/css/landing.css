@@ -2,22 +2,28 @@
 
 @font-face {
     font-family: ProximaBlack;
-    src: url('../fonts/ProximaNova-Black.otf');
+    src: url('../fonts/AvenirNextCyr-Heavy.woff');
 }
 
 @font-face {
     font-family: Proxima;
-    src: url('../fonts/ProximaNova-Reg.otf');
+    src: url('../fonts/AvenirNextCyr-Regular.woff');
 }
 
 @font-face {
     font-family: ProximaBold;
-    src: url('../fonts/ProximaNova-Bold.otf');
+    src: url('../fonts/AvenirNextCyr-Bold.woff');
 }
 
 @font-face {
+    font-family: ProximaDemi;
+    src: url('../fonts/AvenirNextCyr-Demi.woff');
+}
+
+
+@font-face {
     font-family: ProximaLight;
-    src: url('../fonts/ProximaNova-Light.otf');
+    src: url('../fonts/AvenirNextCyr-Light.woff');
 }
 
 img {
@@ -74,42 +80,21 @@ body.scroll {
 
 .promotion > div {
     width: 44.5rem;
-    padding-right: 2rem;
+    padding-right: 3rem;
     box-sizing: border-box;
 }
 
 .promotion h2 {
     font-size: 20px;
     text-transform: uppercase;
+    font-family: ProximaBlack;
+    color: #404040;
     position: relative;
 }
 
 .summary {
     display: flex;
     margin-top: 6rem;
-}
-
-.car span {
-    z-index: -1;
-    font-family: ProximaBlack;
-    color: #d5cece;
-    font-size: 46px;
-    position: absolute;
-    left: -10px;
-    top: -39px;
-    text-transform: uppercase;
-}
-
-.car {
-    position: relative;
-    display: flex;
-    margin: 0 0 6rem 0;
-    align-items: flex-start;
-}
-
-.car img {
-    width: 50%;
-    height: auto;
 }
 
 .summary > div {
@@ -120,14 +105,19 @@ body.scroll {
     margin: 5rem 0 0 0;
 }
 
+span.gold, b.gold {
+    color: #ecd93b;
+}
+
 .promotion p {
     font-size: 20px;
     text-transform: uppercase;
-    font-family: ProximaLight;
-    margin: 2rem 0;
+    font-family: ProximaDemi;
+    margin: 1.5rem 0;
+    color: #757575;
 }
 
-.promotion h2 span {
+.promotion h2 span{
     z-index: -1;
     font-family: ProximaBlack;
     color: #d5cece;
