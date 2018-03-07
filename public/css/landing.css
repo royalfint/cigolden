@@ -106,12 +106,11 @@ body.scroll {
 }
 
 span.gold, b.gold {
-    color: #ecd93b;
+    color: #f7d700;
 }
 
 .promotion p {
     font-size: 20px;
-    text-transform: uppercase;
     font-family: ProximaDemi;
     margin: 1.5rem 0;
     color: #757575;
@@ -125,6 +124,60 @@ span.gold, b.gold {
     position: absolute;
     left: -10px;
     top: -32px;
+}
+
+.dubaiHandler {
+    background: url(../img/about.jpg) center center / cover no-repeat;
+    padding: 5rem 0px 6rem;
+    display: flex;
+    justify-content: center;
+}
+
+.dubai {
+    width: 70rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dubai h3 {
+    color: #f7d700;
+    font-size: 2.5rem;
+    font-family: ProximaBold;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.dubai h4 {
+    color: #fff;
+    font-size: 1.98rem;
+    font-family: ProximaLight;
+    margin: 0;
+}
+
+.dubai h5 {
+    font-family: ProximaBold;
+    color: #f7d700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0;
+    margin-top: 4rem;
+}
+
+.dubai p {
+    font-size: 1.4rem;
+    padding-left: 3rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    color: #fff;
+    font-weight: 600;
+    max-width: 26rem;
+}
+
+.dubai p.smalll {
+    font-size: 1rem;
+    color: #fff;
+    max-width: 40rem;
+    padding-left: 0;
 }
 
 #menu a{
@@ -1132,6 +1185,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1300px) {
+    .dubai {
+        width: auto;
+    }
     .promotion > div {
         width: 32.5rem;
     }
@@ -1311,6 +1367,7 @@ form.small .submit:hover {
     }
     .promotion > div {
         width: 100%;
+        padding: 0 1rem;
     }
     #month {
         margin-bottom: 6rem;
@@ -1381,6 +1438,14 @@ form.small .submit:hover {
     }
     form {
         width: 34rem;
+    }
+}
+
+
+@media screen and (max-width: 950px) {
+    .dubai {
+        padding: 0 1rem 0 2rem;
+        box-sizing: border-box;
     }
 }
 
@@ -1513,6 +1578,18 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 776px) { 
+    .dubai h3 {
+        font-size: 2rem;
+    }
+    .dubai h4 {
+        font-size: 1.5rem;
+    }
+    .dubai h5 {
+        font-size: 1.3rem;
+    }
+    .dubai p {
+        padding-left: 1rem;
+    }
     .promotion {
         padding-left: 1rem;
         box-sizing: border-box;
