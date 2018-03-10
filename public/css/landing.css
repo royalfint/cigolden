@@ -92,6 +92,61 @@ body.scroll {
     position: relative;
 }
 
+.triangle {
+  shape-outside: polygon(0% 100%, 100% 100%, 0% 0%);
+  width: 300px;
+  height: 500px;
+  float: left;
+  opacity: .2;
+}
+
+.general {
+    width: 50rem;
+    position: relative;
+    margin: 4rem 0;
+    margin-left: 15rem;
+}
+
+.gen {
+    background: url(../img/whitediamond.png);
+}
+
+.general h3 {
+    margin-top: 2.5rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-family: ProximaDemi;
+}
+
+.general p {
+    margin-top: 0.8rem;
+    font-family: Proxima;
+    font-size: 1.3rem;
+    max-width: 46rem;
+}
+
+.general h3 img {
+    height: 1.15rem;
+    margin-right: 0.5rem;
+}
+
+.general p span,
+.general h3 span{
+    font-family: ProximaBold;
+}
+
+.logogen{
+    position: absolute;
+    height: 100%;
+    left: -27rem;
+    top: 0;
+}
+
+.carlogo {
+    height: 6rem;
+    margin-top: 1.5rem;
+}
+
 .summary {
     display: flex;
     margin-top: 6rem;
@@ -127,7 +182,7 @@ span.gold, b.gold {
 }
 
 .dubaiHandler {
-    background: url(../img/about.jpg) center center / cover no-repeat;
+    background: url(../img/diagmonds_@2X.png);
     padding: 5rem 0px 6rem;
     display: flex;
     justify-content: center;
@@ -465,6 +520,7 @@ h4.gray {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin: 2rem 0;
 }
 
 .rectFact {
@@ -672,7 +728,7 @@ h4.gray {
 }
 
 .contactus {
-    padding: 5rem 0 8rem 0;
+    padding: 5rem 0 3rem 0;
     display: flex;
 }
 
@@ -1235,6 +1291,9 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 1200px) {
+    .general {
+        margin-left: 0;
+    }
     .promotion > div {
         width: 30.5rem;
     }
@@ -1443,6 +1502,9 @@ form.small .submit:hover {
 
 
 @media screen and (max-width: 950px) {
+    .general {
+        width: 41rem;
+    }
     .dubai {
         padding: 0 1rem 0 2rem;
         box-sizing: border-box;
@@ -1578,6 +1640,12 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 776px) { 
+    .triangle, .logogen {
+        display: none;
+    }
+    .general {
+        width: 80%;
+    }
     .dubai h3 {
         font-size: 2rem;
     }
@@ -1747,6 +1815,15 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 430px) {
+    .general {
+        width: 85%;
+    }
+    .carlogo {
+        width: 100%;
+        height: auto;
+        position: relative;
+        left: -1rem;
+    }
     .promotion h2 span, .car span {
         line-height: 28px;
         top: -45px;
