@@ -263,8 +263,7 @@ app.get("/refs2", help.isLoggedIn, function(req, res){
 
 app.get("/withdrawal", help.isLoggedIn, function(req, res){
     User.findById({_id: req.user.id}, function(err, user){
-        if(err)
-            console.log(err);
+        if(err) console.log(err);
         
         var available_funds = 0;
         
