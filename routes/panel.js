@@ -6,7 +6,7 @@ var express = require("express"),
     help = require("./helpful"),
     sgMail = require('@sendgrid/mail');
     
-var api_key = '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';
+var api_key = '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';
     
 app.get("/wallet", help.isLoggedIn, function(req, res) {
     User.findById(req.user.id, function(err, user){
