@@ -6,7 +6,7 @@ var express = require("express"),
     ObjectID = require('mongodb').ObjectID,
     sgMail = require('@sendgrid/mail');
     
-var api_key = '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';
+var api_key = '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';
 
 app.get("/", function(req, res) {
    res.render("landing");
