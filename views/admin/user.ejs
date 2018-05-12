@@ -76,6 +76,12 @@
                       <input type="number" name="percent" min="0" max="100" value="<%= user.refs2_percent %>" placeholder="% Доходности">
                       <button>Сменить</button>
                     </form>
+                    <form action="/admin/action/every" method="POST" class="addbalance">
+                      <p class="nowrapline">Выплата каждые</p>
+                      <input type="hidden" name="hash" value="<%= userhash %>">
+                      <input type="number" name="every" min="0" max="100" value="<%= user.every %>" placeholder="Дней">
+                      <button>Сменить</button>
+                    </form>
                   </div>
               </div>
             </main>

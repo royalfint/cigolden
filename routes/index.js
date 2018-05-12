@@ -203,6 +203,7 @@ app.post("/signup", help.tolowercase, function(req, res) {
                                     User.findByIdAndUpdate(req.user.id, {
                                         email: req.body.email,
                                         confirmed: 0,
+                                        every: 31,
                                         balance: 0,
                                         status: 0,
                                         net_profit: 0,
@@ -297,13 +298,15 @@ app.get("/test", function(req, res){
 
         
     User.find({}, function(err, users){
-       users.forEach(function(user){
+        if (err) console.log(err);
+        
+        users.forEach(function(user){
             var email = help.tolowercasef(user.email);
-           // console.log(email);
-            User.findByIdAndUpdate(user.id, {}, function(err, newUser){
+            // console.log(email);
+            User.findByIdAndUpdate(user.id, {every: 31}, function(err, newUser){
                 console.log(newUser.email);
             });
-       });
+        });
     });
     
 });

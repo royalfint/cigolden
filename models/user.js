@@ -12,6 +12,7 @@ var UserSchema = new mongoose.Schema({
     balance_three: Number,
     firstname: String,
     lastname: String,
+    every: Number,
     docs: String,
     phone: Number,
     net_profit: Number,

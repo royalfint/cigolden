@@ -14,7 +14,7 @@ User.find({}, function(err, users){ //выплаты
                 var future_profit = (user.balance + user.net_profit + user.deposit_back) * (user.deposit_percent / 100);
                 User.findByIdAndUpdate(user._id, {
                     net_profit: Number(user.net_profit) + Number(future_profit),
-                    next_payment: help.daysToDate(user.next_payment, 31)
+                    next_payment: help.daysToDate(user.next_payment, user.every)
                 }, function(err, newUser) {
                         if(err) throw new Error(err);
                 });
@@ -24,7 +24,7 @@ User.find({}, function(err, users){ //выплаты
                 var future_profit_two = (user.balance_two + user.net_profit_two + user.deposit_back_two) * (user.deposit_percent_two / 100);
                 User.findByIdAndUpdate(user._id, {
                     net_profit_two: Number(user.net_profit_two) + Number(future_profit_two),
-                    next_payment_two: help.daysToDate(user.next_payment_two, 31)
+                    next_payment_two: help.daysToDate(user.next_payment_two, user.every)
                 }, function(err, newUser) {
                         if(err) throw new Error(err);
                 });
@@ -34,7 +34,7 @@ User.find({}, function(err, users){ //выплаты
                 var future_profit_three = (user.balance_three + user.net_profit_three + user.deposit_back_three) * (user.deposit_percent_three / 100);
                 User.findByIdAndUpdate(user._id, {
                     net_profit_two: Number(user.net_profit_three) + Number(future_profit_three),
-                    next_payment_three: help.daysToDate(user.next_payment_three, 31)
+                    next_payment_three: help.daysToDate(user.next_payment_three, user.every)
                 }, function(err, newUser) {
                         if(err) throw new Error(err);
                 });

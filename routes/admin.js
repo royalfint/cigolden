@@ -197,6 +197,17 @@ app.post("/admin/action/:action", help.isAdmin, function(req, res) {
                 } 
             });
        };
+    } else if(req.params.action == "every") {
+       if(req.body.every && req.body.every > 0 && req.body.hash.length > 0){
+            var userid = help.decrypt(req.body.hash);
+            User.findByIdAndUpdate(userid, {every: req.body.every}, function(err, newUser){
+                if(err)
+                    console.log();
+                    
+                req.flash("success", "Расписание выплат успешно обновлено!");
+                res.redirect("back");
+            });
+       }
     } else if(req.params.action == "ref1") {
        if(req.body.percent && req.body.percent > 0 && req.body.hash.length > 0){
             var userid = help.decrypt(req.body.hash);
