@@ -74,7 +74,7 @@
                 <h1>Рекомендационный
                     <br> маркетинг</h1>
                 <div class="yell"></div>
-                <p>Приведите к нам партнёра — и Вы, как посредник получите 15% от вложенной суммы всех приведённых вами партнёров.
+                <p>Приведите к нам партнёра — и Вы, как посредник получите 10% от вложенной суммы всех приведённых вами партнёров.
                     И 5% от привлеченных партнеров вашими партнерами.</p>
             </div>
             <div class="peps">
@@ -83,15 +83,33 @@
         </div>
     </div>
 
-    <div class="invite">
-        <div>
-            <img class="stairs" src="./img/stairs.png" alt="">
-        </div>
-        <div class="heads reverse">
-            <h1 class="white">Приглашайте и<br>зарабатывайте</h1>
-            <div class="yell"></div>
-            <p>Приведите к нам партнёра — и Вы, как посредник получите 15% от вложенной суммы всех приведённых вами партнёров.
-                И 5% от привлеченных партнеров вашими партнерами.</p>
+    <div class="centered gen">
+        <div class="general">
+            <img src="./img/stairs.svg" class="logogen" alt="">
+            <div class="triangle"></div>
+            <h3><img src="img/triangle.svg">БОНУСЫ ОТ ПРИВЛЕЧЕНИЙ (БОП):</h3>
+            <div id="debr">
+                <p><span class="gold">1</span> уровень – 10%, <span class="gold">2</span> уровень – 5%</p>
+                <p><span class="gold">3</span> уровень – 5%, <span class="gold">4</span> уровень – 2%</p>
+                <p><span class="gold">5</span> уровень – 2% (Бонус), <span class="gold">6</span> уровень – 2%</p>
+            </div>
+            <div id="mobr">
+                <p><span class="gold">1</span> уровень – 10%,</p>
+                <p><span class="gold">2</span> уровень – 5%,</p>
+                <p><span class="gold">3</span> уровень – 5%,</p>
+                <p><span class="gold">4</span> уровень – 2%,</p>
+                <p><span class="gold">5</span> уровень – 2%,</p>
+                <p><span class="gold">6</span> уровень – 2%</p>
+            </div>
+            <h3><img src="img/triangle.svg">БОНУСЫ ОТ ТОВАРООБОРОТА:</h3>
+            <p><span class="gold">-</span> Новичок: 10.000тг. + <span class="gold">4</span> уровень (в БОП)</p>
+            <p><span class="gold">-</span> Менеджер: 20.000тг. + 3% (Бэк)</p>
+            <p><span class="gold">-</span> Рег. Менеджер: 80.000тг. + <span class="gold">5</span> уровень  (в БОП)</p>
+            <p><span class="gold">-</span>  Директор: 160.000тг. +5% (Бэк)</p>
+            <p><span class="gold">-</span>  Лидер: 320.000тг. +<span class="gold">6</span> уровень (в БОП)</p>
+            <p><span class="gold">-</span> Бронзовый Лидер: 960.000тг. +5% на <span class="gold">3</span> уровень(в БОП)</p>
+            <p><span class="gold">-</span> Сереб. Лидер: 1.900.000тг.  +5% на <span class="gold">2</span> уровень(в БОП)</p></p>
+            <p><span class="gold">-</span> Золотой Лидер: 3.600.000тг. +5% на <span class="gold">1</span> уровень(в БОП)</p>
         </div>
     </div>
 
@@ -105,13 +123,14 @@
         <div>
             <img src="./img/logo.svg" alt="">
             <p>
-                <img src="./img/location.svg" style="position: relative; left: -0.3rem;" alt=""> Момышулы 27</p>
+                <img src="./img/location.svg" style="position: relative; left: -0.3rem;" alt=""> Достык 180, 111 офис</p>
             <p>
-                <img src="./img/phone.svg" alt=""> +7 (776) 197-76-56</p>
+                <img src="./img/phone.svg" alt=""> +7 (700) 365-84-46</p>
             <p>
-                <img src="./img/mail.svg" alt=""> info@cigolden.com</p>
+                <img src="./img/phone.svg" alt=""> +7 (777) 677-37-37</p>
+            <!--p><img src="./img/mail.svg" alt=""> info@cigolden.com</p-->
         </div>
-        <div>
+        <!--div>
             <h3>Последние новости</h3>
             <h4>Я тону под весом груза</h4>
             <h5>4 января, 2018</h5>
@@ -119,23 +138,21 @@
             <h5>4 января, 2018</h5>
             <h4>Я тону под весом груза</h4>
             <h5>4 января, 2018</h5>
-        </div>
+        </div-->
         <div>
             <h3>Карта сайта</h3>
-            <a href="#">Главная</a>
-            <a href="#">Связаться с нами</a>
-            <a href="#">Карта сайта</a>
-            <a href="#">Карта</a>
-            <a href="#">Позвонить</a>
-            <a href="#">Личный Кабинет</a>
+            <a href="/">Главная</a>
+            <a href="/signup">Регистрация</a>
+            <a href="/login">Личный Кабинет</a>
+            <a href="/reset">Забыл пароль</a>
         </div>
         <div>
             <h3>Напишите нам</h3>
-            <form class="small">
-                <input type="text" placeholder="Имя*">
-                <input type="text" placeholder="Тема*">
+            <form class="small" action="/contact" method="POST">
+                <input type="email" placeholder="Email*" name="name">
+                <input type="text" placeholder="Тема*" name="thread">
                 <textarea name="" id="" cols="30" placeholder="Сообщение*" rows="3"></textarea>
-                <a class="submit">Отправить</a>
+                <input type="submit" class="submit" value="Отправить">
             </form>
         </div>
     </footer>

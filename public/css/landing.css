@@ -104,7 +104,7 @@ body.scroll {
     width: 50rem;
     position: relative;
     margin: 4rem 0;
-    margin-left: 15rem;
+    margin-left: 30rem;
 }
 
 .gen {
@@ -112,7 +112,7 @@ body.scroll {
 }
 
 .general h3 {
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     text-transform: uppercase;
     font-size: 1.5rem;
     font-family: ProximaDemi;
@@ -121,7 +121,7 @@ body.scroll {
 .general p {
     margin-top: 0.8rem;
     font-family: Proxima;
-    font-size: 1.3rem;
+    font-size: 1.08rem;
     max-width: 46rem;
 }
 
@@ -138,7 +138,7 @@ body.scroll {
 .logogen{
     position: absolute;
     height: 100%;
-    left: -27rem;
+    left: -24rem;
     top: 0;
 }
 
@@ -1059,6 +1059,10 @@ form.small .submit:hover {
     margin-bottom: 0.5rem;
 }
 
+#mobr {
+    display: none;
+}
+
 .trust p {
     font-size: 1.25rem;
     color: #cecece;
@@ -1752,6 +1756,12 @@ form.small .submit:hover {
 }
 
 @media screen and (max-width: 550px) {
+    #debr {
+        display: none;
+    }
+    #mobr{
+        display: block;
+    }
     #menu {
         padding-top: 0rem;
         flex-direction: column;
